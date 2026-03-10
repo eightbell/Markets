@@ -1,8 +1,89 @@
 <!DOCTYPE html>
-<html>
-<head><title>EightBell Market Brief — 10 Mar 2026</title></head>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EightBell Market Brief — 10 Mar 2026</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    background: #0d1117;
+    color: #e6edf3;
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+    line-height: 1.7;
+  }
+  header {
+    border-bottom: 1px solid #30363d;
+    padding-bottom: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  .logo {
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #f0883e;
+    margin-bottom: 0.25rem;
+  }
+  h1 {
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: #f0f6fc;
+    margin-bottom: 0.25rem;
+  }
+  .date {
+    font-size: 0.9rem;
+    color: #8b949e;
+  }
+  section {
+    margin-bottom: 1.75rem;
+  }
+  h2 {
+    font-family: 'Courier New', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #f0883e;
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.3rem;
+    border-bottom: 1px solid #21262d;
+  }
+  p {
+    font-size: 1rem;
+    color: #c9d1d9;
+  }
+  .highlight {
+    color: #f0883e;
+    font-weight: 600;
+  }
+  .up { color: #3fb950; }
+  .down { color: #f85149; }
+  footer {
+    margin-top: 3rem;
+    padding-top: 1rem;
+    border-top: 1px solid #30363d;
+    font-size: 0.8rem;
+    color: #484f58;
+    text-align: center;
+  }
+  footer a { color: #58a6ff; text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+  @media (max-width: 600px) {
+    body { padding: 1.25rem 1rem; }
+    h1 { font-size: 1.3rem; }
+  }
+</style>
+</head>
 <body>
-<h1>Market Brief</h1>
+
+<header>
+  <div class="logo">Eight Bell</div>
+  <h1>Risk-off Monday</h1>
+  <div class="date">10 March 2026</div>
+</header>
 
 <section id="headline">
 <h2>Summary</h2>
@@ -11,17 +92,17 @@
 
 <section id="overnight">
 <h2>Overnight</h2>
-<p>Nikkei -1.2%, Hang Seng -0.8%. Shanghai flat after mixed PMI. ASX dragged by miners. BOJ minutes showed no urgency on rates.</p>
+<p>Nikkei <span class="down">-1.2%</span>, Hang Seng <span class="down">-0.8%</span>. Shanghai flat after mixed PMI. ASX dragged by miners. BOJ minutes showed no urgency on rates.</p>
 </section>
 
 <section id="equities">
 <h2>Equities</h2>
-<p>S&P futures -0.6%, Nasdaq -0.9%. STOXX 600 opening lower. Odd one out: Rheinmetall +3.4% on fresh defence orders. Semis under pressure across the board.</p>
+<p>S&P futures <span class="down">-0.6%</span>, Nasdaq <span class="down">-0.9%</span>. STOXX 600 opening lower. Odd one out: <span class="highlight">Rheinmetall <span class="up">+3.4%</span></span> on fresh defence orders. Semis under pressure across the board.</p>
 </section>
 
 <section id="fx">
 <h2>FX &amp; Commodities</h2>
-<p>DXY 104.8 (+0.3%). EUR/USD 1.0782 soft. USD/JPY 150.2 testing resistance. Gold $2,148 holding. Brent $81.40, WTI $77.20. Copper off 1.5%.</p>
+<p>DXY 104.8 (<span class="up">+0.3%</span>). EUR/USD 1.0782 soft. USD/JPY 150.2 testing resistance. Gold $2,148 holding. Brent $81.40, WTI $77.20. Copper <span class="down">off 1.5%</span>.</p>
 </section>
 
 <section id="day-ahead">
@@ -33,6 +114,10 @@
 <h2>Buzz</h2>
 <p>FinTwit fixated on yen carry unwind risks. Reddit crowd rotating into defence names. Sentiment: cautious, bordering grumpy.</p>
 </section>
+
+<footer>
+  <a href="https://x.com/eight_bell8am">@eight_bell8am</a> · EightBell Markets
+</footer>
 
 </body>
 </html>
