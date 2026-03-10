@@ -1,123 +1,285 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>EightBell Market Brief — 10 Mar 2026</title>
-<style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body {
-    font-family: 'Georgia', 'Times New Roman', serif;
-    background: #0d1117;
-    color: #e6edf3;
-    max-width: 680px;
-    margin: 0 auto;
-    padding: 2rem 1.5rem;
-    line-height: 1.7;
-  }
-  header {
-    border-bottom: 1px solid #30363d;
-    padding-bottom: 1.5rem;
-    margin-bottom: 2rem;
-  }
-  .logo {
-    font-family: 'Courier New', monospace;
-    font-size: 0.85rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: #f0883e;
-    margin-bottom: 0.25rem;
-  }
-  h1 {
-    font-size: 1.6rem;
-    font-weight: 400;
-    color: #f0f6fc;
-    margin-bottom: 0.25rem;
-  }
-  .date {
-    font-size: 0.9rem;
-    color: #8b949e;
-  }
-  section {
-    margin-bottom: 1.75rem;
-  }
-  h2 {
-    font-family: 'Courier New', monospace;
-    font-size: 0.75rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: #f0883e;
-    margin-bottom: 0.5rem;
-    padding-bottom: 0.3rem;
-    border-bottom: 1px solid #21262d;
-  }
-  p {
-    font-size: 1rem;
-    color: #c9d1d9;
-  }
-  .highlight {
-    color: #f0883e;
-    font-weight: 600;
-  }
-  .up { color: #3fb950; }
-  .down { color: #f85149; }
-  footer {
-    margin-top: 3rem;
-    padding-top: 1rem;
-    border-top: 1px solid #30363d;
-    font-size: 0.8rem;
-    color: #484f58;
-    text-align: center;
-  }
-  footer a { color: #58a6ff; text-decoration: none; }
-  footer a:hover { text-decoration: underline; }
-  @media (max-width: 600px) {
-    body { padding: 1.25rem 1rem; }
-    h1 { font-size: 1.3rem; }
-  }
+<!DOCTYPE html><html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style>
+@charset "utf-8";
+
+* { margin: 0px; padding: 0px; box-sizing: border-box; }
+
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: rgb(13, 17, 23); color: rgb(230, 237, 243); line-height: 1.6; }
+
+.container { max-width: 900px; margin: 0px auto; padding: 24px 20px; }
+
+.header { border-bottom: 1px solid rgb(48, 54, 61); padding-bottom: 16px; margin-bottom: 24px; }
+
+.header h1 { font-size: 22px; font-weight: 600; color: rgb(240, 246, 252); }
+
+.header .date { font-size: 13px; color: rgb(139, 148, 158); margin-top: 4px; }
+
+.headline { font-size: 17px; font-weight: 600; color: rgb(247, 201, 72); margin-bottom: 24px; padding: 12px 16px; background: rgb(26, 30, 36); border-left: 3px solid rgb(247, 201, 72); border-radius: 4px; }
+
+.section { margin-bottom: 28px; }
+
+.section h2 { font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: rgb(139, 148, 158); margin-bottom: 12px; }
+
+.section p, .section li { font-size: 15px; color: rgb(201, 209, 217); }
+
+.section ul { list-style: none; padding: 0px; }
+
+.section li { padding: 4px 0px 4px 16px; position: relative; }
+
+.section li::before { content: "•"; position: absolute; left: 0px; color: rgb(72, 79, 88); }
+
+.ticker-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-bottom: 20px; }
+
+.ticker-card { background: rgb(22, 27, 34); border: 1px solid rgb(48, 54, 61); border-radius: 8px; padding: 14px 16px; cursor: pointer; transition: border-color 0.15s, background 0.15s; position: relative; }
+
+.ticker-card:hover { border-color: rgb(88, 166, 255); background: rgb(26, 34, 51); }
+
+.ticker-card .name { font-size: 12px; color: rgb(139, 148, 158); text-transform: uppercase; letter-spacing: 0.5px; }
+
+.ticker-card .change { font-size: 22px; font-weight: 700; margin-top: 2px; }
+
+.ticker-card .change.up { color: rgb(63, 185, 80); }
+
+.ticker-card .change.down { color: rgb(248, 81, 73); }
+
+.ticker-card .sublabel { font-size: 11px; color: rgb(110, 118, 129); margin-top: 2px; }
+
+.ticker-card .chart-hint { font-size: 10px; color: rgb(72, 79, 88); position: absolute; bottom: 6px; right: 10px; opacity: 0; transition: opacity 0.15s; }
+
+.ticker-card:hover .chart-hint { opacity: 1; }
+
+.chart-overlay { display: none; position: fixed; top: 0px; left: 0px; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.75); z-index: 1000; justify-content: center; align-items: center; }
+
+.chart-overlay.active { display: flex; }
+
+.chart-container { background: rgb(22, 27, 34); border: 1px solid rgb(48, 54, 61); border-radius: 12px; padding: 16px; width: 90%; max-width: 820px; position: relative; }
+
+.chart-container .close-btn { position: absolute; top: 10px; right: 14px; font-size: 20px; color: rgb(139, 148, 158); cursor: pointer; z-index: 10; background: none; border: none; }
+
+.chart-container .close-btn:hover { color: rgb(240, 246, 252); }
+
+.chart-title { font-size: 14px; font-weight: 600; color: rgb(230, 237, 243); margin-bottom: 8px; }
+
+.mover { display: flex; align-items: baseline; gap: 10px; padding: 8px; border-bottom: 1px solid rgb(33, 38, 45); cursor: pointer; transition: background 0.1s; border-radius: 4px; }
+
+.mover:hover { background: rgb(26, 34, 51); }
+
+.mover:last-child { border-bottom: none; }
+
+.mover .ticker { font-weight: 700; font-size: 14px; color: rgb(88, 166, 255); min-width: 60px; }
+
+.mover .desc { font-size: 14px; color: rgb(201, 209, 217); }
+
+.mover .chart-hint { font-size: 10px; color: rgb(72, 79, 88); margin-left: auto; opacity: 0; transition: opacity 0.15s; white-space: nowrap; }
+
+.mover:hover .chart-hint { opacity: 1; }
+
+.fx-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-bottom: 12px; }
+
+.fx-card { background: rgb(22, 27, 34); border: 1px solid rgb(48, 54, 61); border-radius: 8px; padding: 12px 14px; cursor: pointer; transition: border-color 0.15s; }
+
+.fx-card:hover { border-color: rgb(88, 166, 255); }
+
+.fx-card .pair { font-size: 13px; font-weight: 600; color: rgb(230, 237, 243); }
+
+.fx-card .rate { font-size: 18px; font-weight: 700; color: rgb(201, 209, 217); margin-top: 2px; }
+
+.fx-card .pct { font-size: 13px; margin-top: 1px; }
+
+.fx-card .pct.down { color: rgb(248, 81, 73); }
+
+.fx-card .pct.up { color: rgb(63, 185, 80); }
+
+.buzz-item { background: rgb(22, 27, 34); border: 1px solid rgb(48, 54, 61); border-radius: 8px; padding: 12px 16px; margin-bottom: 8px; }
+
+.buzz-item .topic { font-weight: 600; color: rgb(230, 237, 243); font-size: 14px; }
+
+.buzz-item .sentiment { font-size: 12px; padding: 2px 8px; border-radius: 10px; display: inline-block; margin-left: 8px; }
+
+.buzz-item .sentiment.bullish { background: rgb(26, 58, 42); color: rgb(63, 185, 80); }
+
+.buzz-item .sentiment.bearish { background: rgb(58, 26, 26); color: rgb(248, 81, 73); }
+
+.buzz-item .sentiment.chaotic { background: rgb(58, 46, 26); color: rgb(247, 201, 72); }
+
+.buzz-item .detail { font-size: 13px; color: rgb(139, 148, 158); margin-top: 4px; }
+
+.divider { border-right: none; border-bottom: none; border-left: none; border-image: initial; border-top: 1px solid rgb(33, 38, 45); margin: 4px 0px 20px; }
+
+.quiet { color: rgb(110, 118, 129); font-style: italic; font-size: 14px; }
+
+.tag { font-size: 11px; padding: 2px 6px; border-radius: 4px; background: rgb(26, 30, 36); color: rgb(139, 148, 158); display: inline-block; margin-right: 4px; }
+
+.beat { color: rgb(63, 185, 80); font-weight: 600; }
+
+.miss { color: rgb(248, 81, 73); font-weight: 600; }
 </style>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily Markets Brief — March 10, 2026</title>
+
 </head>
 <body>
 
-<header>
-  <div class="logo">Eight Bell</div>
-  <h1>Risk-off Monday</h1>
-  <div class="date">10 March 2026</div>
-</header>
+<div class="container">
+  <div class="header">
+    <h1>Daily Markets Brief</h1>
+    <div class="date">Tuesday, March 10, 2026 — 08:00 CET</div>
+  </div>
 
-<section id="headline">
-<h2>Summary</h2>
-<p>Risk-off Monday. US futures sliding after hawkish Fed comments Friday. Europe bracing for German industrial data. Dollar bid.</p>
-</section>
+  <div class="headline">Oil war rhetoric sends markets on a whipsaw ride — Trump promises peace, traders sell hope.</div>
 
-<section id="overnight">
-<h2>Overnight</h2>
-<p>Nikkei <span class="down">-1.2%</span>, Hang Seng <span class="down">-0.8%</span>. Shanghai flat after mixed PMI. ASX dragged by miners. BOJ minutes showed no urgency on rates.</p>
-</section>
+  <!-- OVERNIGHT -->
+  <div class="section">
+    <h2>Overnight</h2>
+    <ul>
+      <li><strong>US afterhours:</strong> Cosmetics sector weak post-close — ELF Beauty -8% on discretionary spending fears. No major earnings surprises.</li>
+      <li><strong>Nikkei:</strong> -5.2% — worst session in months on Hormuz blockade fears, heavy oil dependence crushing sentiment.</li>
+      <li><strong>Hang Seng:</strong> -1.8% — energy drag, but tech names held up (Alibaba flat).</li>
+      <li><strong>Shanghai:</strong> -0.4% — relatively contained; state funds suspected of supporting index near 3,200.</li>
+    </ul>
+  </div>
+  <hr class="divider">
 
-<section id="equities">
-<h2>Equities</h2>
-<p>S&P futures <span class="down">-0.6%</span>, Nasdaq <span class="down">-0.9%</span>. STOXX 600 opening lower. Odd one out: <span class="highlight">Rheinmetall <span class="up">+3.4%</span></span> on fresh defence orders. Semis under pressure across the board.</p>
-</section>
+  <!-- EQUITIES -->
+  <div class="section">
+    <h2>Equities</h2>
+    <div class="ticker-grid">
+      <div class="ticker-card">
+        <div class="name">S&amp;P 500</div>
+        <div class="change up">+0.83%</div>
+        <span class="chart-hint">click for chart</span>
+      </div>
+      <div class="ticker-card">
+        <div class="name">NASDAQ</div>
+        <div class="change up">+1.38%</div>
+        <span class="chart-hint">click for chart</span>
+      </div>
+      <div class="ticker-card">
+        <div class="name">Nikkei 225</div>
+        <div class="change down">-5.20%</div>
+        <span class="chart-hint">click for chart</span>
+      </div>
+      <div class="ticker-card">
+        <div class="name">STOXX 600</div>
+        <div class="change down">-0.63%</div>
+        <span class="chart-hint">click for chart</span>
+      </div>
+    </div>
+    <p style="font-size:14px;"><span class="tag">WEIRD MOVER</span> Nikkei's brutal 5.2% rout — heavy oil dependence and yen weakness as energy costs soar with Hormuz blockade fears.</p>
+  </div>
+  <hr class="divider">
 
-<section id="fx">
-<h2>FX &amp; Commodities</h2>
-<p>DXY 104.8 (<span class="up">+0.3%</span>). EUR/USD 1.0782 soft. USD/JPY 150.2 testing resistance. Gold $2,148 holding. Brent $81.40, WTI $77.20. Copper <span class="down">off 1.5%</span>.</p>
-</section>
+  <!-- US SINGLE STOCKS -->
+  <div class="section">
+    <h2>US Single Stocks</h2>
+    <div class="mover">
+      <span class="ticker">ELF</span>
+      <span class="desc">-8% — cosmetics bloodbath. Entire vanity aisle got wrecked: Ulta -2%, Estée -3%, Coty -4%. Consumers choosing gas over lipstick as inflation bites.</span>
+      <span class="chart-hint">click for chart</span>
+    </div>
+    <div class="mover">
+      <span class="ticker">EL</span>
+      <span class="desc">-3% — dragged down with the sector, but travel retail exposure the extra knife twist. Asia recovery thesis on hold while oil burns.</span>
+      <span class="chart-hint">click for chart</span>
+    </div>
+    <div class="mover">
+      <span class="ticker">XLF</span>
+      <span class="desc">Down ~2% YTD, now -10% in 2026. Banks caught in the stagflation vise — can't cut rates with oil at $90, can't hike into weakening growth. Ugly spot.</span>
+      <span class="chart-hint">click for chart</span>
+    </div>
+  </div>
+  <hr class="divider">
 
-<section id="day-ahead">
-<h2>Day Ahead</h2>
-<p>German factory orders 08:00 CET. ECB's Lagarde speaks 14:00. US consumer credit 21:00. Earnings: Oracle after close.</p>
-</section>
+  <!-- FIXED INCOME -->
+  <div class="section">
+    <h2>Fixed Income</h2>
+    <p>Curve steepened sharply — long bonds sold off on inflation premium from Middle East oil spike. Short end held as traders still price eventual rate cuts once geopolitics settle.</p>
+  </div>
+  <hr class="divider">
 
-<section id="buzz">
-<h2>Buzz</h2>
-<p>FinTwit fixated on yen carry unwind risks. Reddit crowd rotating into defence names. Sentiment: cautious, bordering grumpy.</p>
-</section>
+  <!-- FX -->
+  <div class="section">
+    <h2>FX</h2>
+    <div class="fx-grid">
+      <div class="fx-card">
+        <div class="pair">EUR / USD</div>
+        <div class="rate">1.1573</div>
+        <div class="pct down">-0.32%</div>
+      </div>
+      <div class="fx-card">
+        <div class="pair">EUR / JPY</div>
+        <div class="rate">183.22</div>
+        <div class="pct down">-0.85%</div>
+      </div>
+    </div>
+    <p style="font-size:14px;">Risk-off yen strength capped by Japan's own energy vulnerability. Euro softened on eurozone growth concerns from energy shock.</p>
+  </div>
+  <hr class="divider">
 
-<footer>
-  <a href="https://x.com/eight_bell8am">@eight_bell8am</a> · EightBell Markets
-</footer>
+  <!-- COMMODITIES -->
+  <div class="section">
+    <h2>Commodities</h2>
+    <div class="mover">
+      <span class="ticker">WTI</span>
+      <span class="desc">Whipsawed from sub-$100 to $119.50 intraday (highest since 2022), crushed back to ~$88 on Trump "peace soon" comments.</span>
+      <span class="chart-hint">click for chart</span>
+    </div>
+    <div class="mover">
+      <span class="ticker">GOLD</span>
+      <span class="desc">Steady at ~$5,092 — safe haven bid offset by dollar strength.</span>
+      <span class="chart-hint">click for chart</span>
+    </div>
+  </div>
+  <hr class="divider">
 
-</body>
-</html>
+  <!-- MACRO -->
+  <div class="section">
+    <h2>Macro</h2>
+    <p class="quiet">Light data day — no major releases. Week's focus shifts to Q4 GDP revision and PCE inflation later this week.</p>
+  </div>
+  <hr class="divider">
+
+  <!-- DAY AHEAD -->
+  <div class="section">
+    <h2>Day Ahead</h2>
+    <ul>
+      <li><strong>Q4 GDP 2nd estimate</strong> — consensus: modest downward revision. <span class="tag">KEY</span></li>
+      <li><strong>PCE Inflation</strong> — watching for stickiness above 2.5% <span class="tag">KEY</span></li>
+      <li><strong>Retail E-Commerce Q4</strong> — today</li>
+      <li><strong>Fed speakers</strong> — circuit commentary on geopolitics/inflation backdrop</li>
+    </ul>
+  </div>
+  <hr class="divider">
+
+  <!-- SOCIALS -->
+  <div class="section">
+    <h2>Socials Buzz</h2>
+    <div class="buzz-item">
+      <span class="topic">Hormuz panic → Trump pump</span><span class="sentiment chaotic">Chaotic</span>
+      <div class="detail">Fintwit split between "OPEC+ can't stop supply collapse" doomsayers and "Trump has a plan" dip-buyers. Sentiment flipped bullish in real time as oil reversed.</div>
+    </div>
+    <div class="buzz-item">
+      <span class="topic">Space plays screaming on WSB</span><span class="sentiment bullish">Bullish</span>
+      <div class="detail">AST SpaceMobile mentions up 720%. Rocket Lab and Palantir riding the 2026 WSB Index hype.</div>
+    </div>
+    <div class="buzz-item">
+      <span class="topic">Stagflation whispers</span><span class="sentiment bearish">Bearish</span>
+      <div class="detail">Macro accounts flagging oil + weak jobs combo. "1970s vibes" trending in quote tweets.</div>
+    </div>
+  </div>
+</div>
+
+<!-- CHART OVERLAY -->
+<div class="chart-overlay" id="chartOverlay">
+  <div class="chart-container">
+    <button class="close-btn">×</button>
+    <div class="chart-title" id="chartTitle"></div>
+    <div id="chartWidget" style="height: 450px;"></div>
+  </div>
+</div>
+
+
+
+
+
+</body></html>
