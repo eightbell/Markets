@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eight Bell — Daily Markets Brief — 11 Mar 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0f1114; color: #e5e7eb; font-family: 'Inter', sans-serif; line-height: 1.6; }
+  .container { max-width: 720px; margin: 0 auto; padding: 32px 20px; }
+
+  /* Header */
+  .header { text-align: center; margin-bottom: 36px; border-bottom: 1px solid #1f2937; padding-bottom: 24px; }
+  .header .bell { font-size: 28px; }
+  .header h1 { font-size: 22px; font-weight: 800; letter-spacing: 3px; color: #c8b273; margin: 4px 0; }
+  .header .subtitle { font-size: 11px; color: #6b7280; text-transform: uppercase; letter-spacing: 1.5px; }
+  .header .date { font-size: 13px; color: #9ca3af; margin-top: 6px; }
+  .header .handle { font-size: 12px; color: #6b7280; margin-top: 2px; }
+
+  /* Section headers */
+  .section-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: #6b7280; margin: 28px 0 12px; }
+
+  /* Headline */
+  .headline { font-size: 20px; font-weight: 700; color: #f9fafb; line-height: 1.4; margin-bottom: 4px; }
+
+  /* Body text */
+  .body-text { font-size: 14px; color: #d1d5db; margin-bottom: 6px; }
+  .body-text strong { color: #f9fafb; }
+
+  /* Bullet list */
+  ul.bullets { list-style: none; padding: 0; margin: 0 0 8px; }
+  ul.bullets li { font-size: 13px; color: #d1d5db; padding: 4px 0; padding-left: 16px; position: relative; }
+  ul.bullets li::before { content: "•"; position: absolute; left: 0; color: #c8b273; }
+
+  /* Ticker grid */
+  .ticker-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 12px 0; }
+  .ticker-card { background: #1a1d23; border-radius: 8px; padding: 14px 10px; text-align: center; cursor: pointer; transition: background 0.2s; }
+  .ticker-card:hover { background: #22252d; }
+  .ticker-card .name { font-size: 11px; color: #9ca3af; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+  .ticker-card .value { font-size: 18px; font-weight: 700; margin: 4px 0 2px; }
+  .ticker-card .sub { font-size: 11px; color: #9ca3af; }
+  .green { color: #22c55e; }
+  .red { color: #ef4444; }
+
+  /* Stock mover cards */
+  .mover { background: #1a1d23; border-radius: 8px; padding: 14px 16px; margin: 8px 0; }
+  .mover .ticker { font-size: 13px; font-weight: 700; color: #f9fafb; }
+  .mover .desc { font-size: 13px; color: #9ca3af; margin-top: 2px; }
+
+  /* FX grid */
+  .fx-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin: 12px 0; }
+  .fx-card { background: #1a1d23; border-radius: 8px; padding: 14px 16px; cursor: pointer; transition: background 0.2s; }
+  .fx-card:hover { background: #22252d; }
+  .fx-card .pair { font-size: 11px; font-weight: 600; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.5px; }
+  .fx-card .rate { font-size: 20px; font-weight: 700; color: #f9fafb; margin: 4px 0; }
+  .fx-card .change { font-size: 12px; font-weight: 600; }
+
+  /* Two-column cards */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 12px 0; align-items: stretch; }
+  .card { background: #1a1d23; border-radius: 10px; padding: 16px; position: relative; display: flex; flex-direction: column; }
+  .card .card-label { font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.2px; color: #c8b273; margin-bottom: 10px; }
+  .card .view-link { position: absolute; top: 14px; right: 14px; font-size: 11px; color: #6b7280; text-decoration: none; transition: color 0.2s; }
+  .card .view-link:hover { color: #c8b273; }
+  .card .avatar { width: 36px; height: 36px; border-radius: 50%; background: #374151; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; color: #e5e7eb; margin-bottom: 8px; }
+  .card .author { font-size: 13px; font-weight: 600; color: #f9fafb; }
+  .card .handle-sm { font-size: 12px; color: #6b7280; }
+  .card .tweet-body { font-size: 13px; color: #d1d5db; margin: 8px 0; line-height: 1.5; }
+  .card .tweet-inner { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+  .card .stats { font-size: 11px; color: #6b7280; display: flex; gap: 12px; }
+  .card .chart-title { font-size: 15px; font-weight: 700; color: #f9fafb; margin-bottom: 6px; }
+  .card .chart-source { font-size: 12px; color: #6b7280; margin-bottom: 10px; }
+  .chart-placeholder { width: 100%; height: 100px; background: linear-gradient(135deg, #1f2937, #374151); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 32px; margin-bottom: 10px; }
+  .card .chart-desc { font-size: 12px; color: #9ca3af; line-height: 1.5; }
+
+  /* Buzz row */
+  .buzz-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 12px 0; }
+  .buzz-card { background: #1a1d23; border-radius: 8px; padding: 14px; }
+  .buzz-card .buzz-title { font-size: 13px; font-weight: 600; color: #f9fafb; margin-bottom: 6px; }
+  .buzz-card .buzz-desc { font-size: 12px; color: #9ca3af; margin-bottom: 8px; }
+  .pill { display: inline-block; font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 10px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .pill.bullish { background: rgba(34,197,94,0.15); color: #22c55e; }
+  .pill.bearish { background: rgba(239,68,68,0.15); color: #ef4444; }
+  .pill.chaotic { background: rgba(234,179,8,0.15); color: #eab308; }
+
+  /* Macro */
+  .macro-item { font-size: 13px; color: #d1d5db; padding: 3px 0; }
+  .macro-item .tag { font-size: 10px; font-weight: 700; color: #c8b273; margin-left: 6px; }
+
+  /* TradingView popup */
+  .tv-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1000; align-items: center; justify-content: center; }
+  .tv-overlay.active { display: flex; }
+  .tv-popup { background: #1a1d23; border-radius: 12px; width: 90%; max-width: 800px; height: 500px; position: relative; overflow: hidden; }
+  .tv-close { position: absolute; top: 12px; right: 16px; font-size: 22px; color: #9ca3af; cursor: pointer; z-index: 10; background: none; border: none; }
+  .tv-close:hover { color: #f9fafb; }
+
+  /* Footer */
+  .footer { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid #1f2937; }
+  .footer p { font-size: 11px; color: #4b5563; }
+
+  @media (max-width: 600px) {
+    .ticker-grid { grid-template-columns: repeat(2, 1fr); }
+    .two-col { grid-template-columns: 1fr; }
+    .buzz-row { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="bell">🔔</div>
+    <h1>EIGHT BELL</h1>
+    <div class="subtitle">Daily Markets Brief</div>
+    <div class="date">Wednesday, 11 March 2026 · 08:00 CET</div>
+    <div class="handle">@eight_bell8am</div>
+  </div>
+
+  <!-- Headline -->
+  <div class="headline">Oil whipsaws, Oracle rips, and CPI day looms — the market can't catch its breath.</div>
+
+  <!-- Overnight -->
+  <div class="section-label">Overnight</div>
+  <ul class="bullets">
+    <li><strong>Oracle (ORCL)</strong> surged ~9% after hours on a monster Q3 beat: revenue $17.2B (+22%), cloud revenue +44% to $8.9B. Raised FY27 guidance to $90B. Larry Ellison grinning somewhere on a yacht.</li>
+    <li><strong>Oil rollercoaster continues.</strong> WTI cratered 13% on Tuesday after Trump hinted the Iran war could end "very soon," then clawed back overnight as the White House walked back naval escort claims. Currently ~$84/bbl.</li>
+    <li><strong>Chip stocks bid.</strong> TSMC's strong sales data lifted Nvidia (+1.2%), Micron (+3.5%), Intel (+2.6%). The AI capex cycle shows zero signs of slowing.</li>
+    <li><strong>Asia up on oil relief.</strong> Nikkei rebounded +2.9% after Monday's 5.5% wipeout. Yen steady. Tokyo recouped most losses as oil dropped below $100.</li>
+    <li><strong>US futures flat</strong> ahead of February CPI at 8:30am ET. The print won't yet capture Iran-war energy shock — that's a March story.</li>
+  </ul>
+
+  <!-- Equities -->
+  <div class="section-label">Equities</div>
+  <div class="ticker-grid">
+    <div class="ticker-card" onclick="openTV('AMEX:SPY')">
+      <div class="name">S&P 500</div>
+      <div class="value green">+0.40%</div>
+      <div class="sub">6,823</div>
+    </div>
+    <div class="ticker-card" onclick="openTV('NASDAQ:QQQ')">
+      <div class="name">NASDAQ</div>
+      <div class="value green">+0.64%</div>
+      <div class="sub">22,842</div>
+    </div>
+    <div class="ticker-card" onclick="openTV('AMEX:EWJ')">
+      <div class="name">Nikkei 225</div>
+      <div class="value green">+2.88%</div>
+      <div class="sub">54,248</div>
+    </div>
+    <div class="ticker-card" onclick="openTV('AMEX:VGK')">
+      <div class="name">STOXX 600</div>
+      <div class="value green">+0.20%</div>
+      <div class="sub">—</div>
+    </div>
+  </div>
+  <div class="mover">
+    <div class="ticker">🔥 Unusual Mover: Lasertec Corp <span class="green">+13.3%</span></div>
+    <div class="desc">Japanese chip-equipment maker led the Nikkei rebound. Monday's 11% drubbing turned into Tuesday's revenge trade. Pure whiplash.</div>
+  </div>
+
+  <!-- US Single Stocks -->
+  <div class="section-label">US Single Stocks</div>
+  <div class="mover" onclick="openTV('NYSE:ORCL')" style="cursor:pointer;">
+    <div class="ticker">ORCL <span class="green">+9.4% AH</span></div>
+    <div class="desc">The cloud beast keeps feasting. Revenue +22%, cloud infra up 84% — blowing past Street estimates. Raised FY27 rev guide to $90B. This is what an AI-fueled backlog looks like when it starts converting.</div>
+  </div>
+  <div class="mover" onclick="openTV('NASDAQ:MU')" style="cursor:pointer;">
+    <div class="ticker">MU <span class="green">+3.5%</span></div>
+    <div class="desc">Micron riding the TSMC halo. HBM3E chips for AI accelerators are printing money — record revenue guidance and 68% gross margins. Memory is back, baby.</div>
+  </div>
+  <div class="mover" onclick="openTV('NASDAQ:NVDA')" style="cursor:pointer;">
+    <div class="ticker">NVDA <span class="green">+1.2%</span></div>
+    <div class="desc">Steady grind higher on the TSMC read-through. Market still digesting Blackwell ramp. Jensen's probably already on the phone asking for more wafers.</div>
+  </div>
+
+  <!-- Fixed Income -->
+  <div class="section-label">Fixed Income</div>
+  <p class="body-text">Wild ride. The 10Y briefly touched 3.96% on flight-to-quality Iran flows before ripping back to <strong>4.22%</strong> on stagflation fears. Oil-driven inflation expectations vs. recession hedges = a tug-of-war that isn't over.</p>
+
+  <!-- FX -->
+  <div class="section-label">FX</div>
+  <div class="fx-grid">
+    <div class="fx-card" onclick="openTV('OANDA:EURUSD')">
+      <div class="pair">EUR / USD</div>
+      <div class="rate">1.1621</div>
+      <div class="change green">+0.05%</div>
+    </div>
+    <div class="fx-card" onclick="openTV('OANDA:EURJPY')">
+      <div class="pair">EUR / JPY</div>
+      <div class="rate">184.49</div>
+      <div class="change green">+0.20%</div>
+    </div>
+  </div>
+  <p class="body-text" style="font-size:12px; color:#9ca3af;">Dollar soft as war premium fades. Yen weakened slightly on risk-on Asian session. No major dislocations.</p>
+
+  <!-- Commodities -->
+  <div class="section-label">Commodities</div>
+  <div class="mover" onclick="openTV('AMEX:USO')" style="cursor:pointer;">
+    <div class="ticker">WTI Crude <span class="red">~$84.30</span> · Brent <span class="red">~$87.95</span></div>
+    <div class="desc">IEA proposing the largest-ever emergency reserve release to cap the spike. Oil off Monday's insane $119 Brent print but still elevated. Every headline from DC or Tehran moves it $5. Expect more volatility today.</div>
+  </div>
+
+  <!-- Macro -->
+  <div class="section-label">Macro</div>
+  <div class="macro-item">📊 Feb CPI (headline): est. +0.3% m/m, +2.4% y/y — print won't capture Iran oil shock</div>
+  <div class="macro-item">📊 Feb Core CPI: est. +0.3% m/m, +2.5% y/y</div>
+  <div class="macro-item">📊 Japan Q4 GDP revised up to +0.3% (from +0.1%) — domestic demand strong</div>
+
+  <!-- Day Ahead -->
+  <div class="section-label">Day Ahead</div>
+  <ul class="bullets">
+    <li><strong>08:30 ET — February CPI</strong> (headline est. +2.4% y/y, core +2.5%) <span class="macro-item"><span class="tag">KEY</span></span></li>
+    <li><strong>Campbell's (CPB)</strong> reports earnings before the bell</li>
+    <li><strong>FOMC next week</strong> (Mar 17-18) — dot plot + Powell presser. Market pricing 92%+ hold at 3.50-3.75%. Watch for shift from 1 to 2 cuts in dots. <span class="macro-item"><span class="tag">KEY</span></span></li>
+    <li><strong>Tomorrow:</strong> Factory orders, housing starts, earnings from Dollar General, Dick's, Adobe, Lennar</li>
+  </ul>
+
+  <!-- Fintwit Pick & Chart of the Day -->
+  <div class="section-label">Fintwit Pick & Chart of the Day</div>
+  <div class="two-col">
+    <!-- Fintwit Pick -->
+    <div class="card">
+      <div class="card-label">Fintwit Pick</div>
+      <a class="view-link" href="https://x.com/KobeissiLetter/status/2031133637274411314" target="_blank">view on X →</a>
+      <div class="tweet-inner">
+        <div class="avatar">KL</div>
+        <div class="author">The Kobeissi Letter</div>
+        <div class="handle-sm">@KobeissiLetter</div>
+        <div class="tweet-body">$SPY $675 strike calls fell to $0.02 — effectively worthless. Then Trump said the Iran war is "very complete." 80 minutes later those same calls were at $4.95. That's +24,650%. A $1,000 bet became $247,500. Historic volatility.</div>
+      </div>
+      <div class="stats">
+        <span>❤️ 8.8K</span>
+        <span>🔁 1.4K</span>
+        <span>👁 2.2M</span>
+      </div>
+    </div>
+    <!-- Chart of the Day -->
+    <div class="card">
+      <div class="card-label">Chart of the Day</div>
+      <a class="view-link" href="https://x.com/KobeissiLetter/status/2031098109900509237" target="_blank">view on X →</a>
+      <div class="chart-title">Oil Prices: "Will Be Referenced for Decades"</div>
+      <div class="chart-source">@KobeissiLetter · ❤️ 18K · 🔁 3.9K · 👁 2.7M</div>
+      <div style="width:100%; border-radius:8px; overflow:hidden; margin-bottom:10px;">
+        <img src="https://pbs.twimg.com/media/HC_o90qWAAAJ1is?format=jpg&name=medium" alt="Chart of oil prices showing historic intraday reversal" style="width:100%; height:auto; display:block; border-radius:8px;" onerror="this.parentElement.innerHTML='<div style=&quot;height:100px;background:linear-gradient(135deg,#1f2937,#374151);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;color:#6b7280;&quot;>Image unavailable — view on X</div>'"/>
+      </div>
+      <div class="chart-desc">The chart that broke fintwit. Oil surged +30% to $119.50 before G7 reserve release rumors and Trump peace signals triggered a $26/bbl crash in 13 hours — the biggest intraday reversal on record.</div>
+    </div>
+  </div>
+
+  <!-- Socials Buzz -->
+  <div class="section-label">Socials Buzz</div>
+  <div class="buzz-row">
+    <div class="buzz-card">
+      <div class="buzz-title">$ORCL Earnings Beat</div>
+      <div class="buzz-desc">Fintwit celebrating Oracle's cloud infra blowout. "Larry's revenge tour" trending. AI capex bulls feeling vindicated.</div>
+      <span class="pill bullish">Bullish</span>
+    </div>
+    <div class="buzz-card">
+      <div class="buzz-title">Oil Whipsaw Trading</div>
+      <div class="buzz-desc">WSB flooded with oil play loss/gain porn. $USO calls and puts both destroyed in the same session. Peak chaos.</div>
+      <span class="pill chaotic">Chaotic</span>
+    </div>
+    <div class="buzz-card">
+      <div class="buzz-title">$ASTS Space Hype</div>
+      <div class="buzz-desc">AST SpaceMobile mentions up 720% on WSB. Reddit retail loading up on the satellite play. "Next GME" energy building.</div>
+      <span class="pill bullish">Bullish</span>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <p>🔔 EIGHT BELL · @eight_bell8am · For informational purposes only. Not investment advice.</p>
+  </div>
+
+</div>
+
+<!-- TradingView Popup -->
+<div class="tv-overlay" id="tvOverlay" onclick="closeTV(event)">
+  <div class="tv-popup" id="tvPopup">
+    <button class="tv-close" onclick="closeTV(event)">✕</button>
+  </div>
+</div>
+
+<script>
+function openTV(symbol) {
+  const overlay = document.getElementById('tvOverlay');
+  const popup = document.getElementById('tvPopup');
+  const iframe = document.createElement('iframe');
+  // Remove old iframes
+  popup.querySelectorAll('iframe').forEach(el => el.remove());
+  iframe.src = 'https://s.tradingview.com/widgetembed/?frameElementId=tv&symbol=' + encodeURIComponent(symbol) + '&interval=D&hidesidetoolbar=1&symboledit=1&saveimage=0&toolbarbg=1a1d23&studies=[]&theme=dark&style=1&timezone=exchange&withdateranges=1&hide_top_toolbar=0&hide_legend=0&allow_symbol_change=1&locale=en&colorTheme=dark&width=100%25&height=100%25';
+  iframe.style.width = '100%';
+  iframe.style.height = '100%';
+  iframe.style.border = 'none';
+  iframe.style.borderRadius = '12px';
+  popup.appendChild(iframe);
+  overlay.classList.add('active');
+}
+function closeTV(e) {
+  if (e.target === document.getElementById('tvOverlay') || e.target.classList.contains('tv-close')) {
+    document.getElementById('tvOverlay').classList.remove('active');
+    document.getElementById('tvPopup').querySelectorAll('iframe').forEach(el => el.remove());
+  }
+}
+</script>
+</body>
+</html>
