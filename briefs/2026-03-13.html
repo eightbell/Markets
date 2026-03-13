@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<!-- saved from url=(0237)file:///Users/admin/Library/Application%20Support/Claude/local-agent-mode-sessions/2a4b5382-eae3-4f0f-a41e-0f3fe012adef/f9fe4336-87d3-4da3-94ba-7bf8e22fb6cb/local_b8357a89-8cf1-4e11-8650-63d00b9edda8/outputs/daily-markets-2026-03-13.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eight Bell - Daily Markets - 13 March 2026</title>
+  <style>
+    /* ============================================================
+       EIGHT BELL DAILY MARKETS BRIEF — STYLESHEET
+       DO NOT MODIFY
+    ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --eb-navy:    #0a1628;
+      --eb-navy2:   #0f2040;
+      --eb-blue:    #1a3a6b;
+      --eb-accent:  #c9a84c;
+      --eb-accent2: #e8c97a;
+      --eb-up:      #22c55e;
+      --eb-down:    #ef4444;
+      --eb-muted:   #94a3b8;
+      --eb-text:    #e2e8f0;
+      --eb-border:  #1e3254;
+      --card-bg:    #101e35;
+      --tag-bg:     #1e3254;
+      --font-sans:  'Inter', 'Segoe UI', system-ui, sans-serif;
+      --font-mono:  'JetBrains Mono', 'Fira Code', monospace;
+    }
+    body {
+      background: var(--eb-navy);
+      color: var(--eb-text);
+      font-family: var(--font-sans);
+      font-size: 14px;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+    a { color: var(--eb-accent2); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ---- MASTHEAD ---- */
+    .masthead {
+      background: var(--eb-navy2);
+      border-bottom: 2px solid var(--eb-accent);
+      padding: 18px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .masthead-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .masthead-logo {
+      width: 40px; height: 40px;
+      background: var(--eb-accent);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 900; font-size: 18px; color: var(--eb-navy);
+    }
+    .masthead-name { font-size: 20px; font-weight: 800; letter-spacing: -0.5px; color: #fff; }
+    .masthead-sub { font-size: 11px; color: var(--eb-muted); text-transform: uppercase; letter-spacing: 1px; }
+    .masthead-date { text-align: right; }
+    .masthead-date .weekday { font-size: 13px; color: var(--eb-accent2); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+    .masthead-date .datestr { font-size: 16px; font-weight: 700; color: #fff; }
+
+    /* ---- WRAPPER ---- */
+    .wrapper { max-width: 960px; margin: 0 auto; padding: 28px 24px 60px; }
+
+    /* ---- HEADLINE ---- */
+    .headline {
+      background: linear-gradient(135deg, var(--eb-blue) 0%, #0d2645 100%);
+      border-left: 4px solid var(--eb-accent);
+      border-radius: 6px;
+      padding: 18px 22px;
+      margin-bottom: 28px;
+    }
+    .headline p {
+      font-size: 17px;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.5;
+    }
+
+    /* ---- SECTION HEADERS ---- */
+    .section-title {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--eb-accent);
+      font-weight: 700;
+      margin-bottom: 12px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid var(--eb-border);
+    }
+    .section { margin-bottom: 32px; }
+
+    /* ---- OVERNIGHT BULLETS ---- */
+    .overnight-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .overnight-list li {
+      background: var(--card-bg);
+      border-radius: 6px;
+      padding: 12px 16px;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      border: 1px solid var(--eb-border);
+    }
+    .overnight-list .label {
+      flex-shrink: 0;
+      background: var(--tag-bg);
+      color: var(--eb-accent2);
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 2px 8px;
+      border-radius: 3px;
+      margin-top: 2px;
+    }
+    .overnight-list .text { font-size: 13px; color: var(--eb-text); }
+
+    /* ---- CARDS GRID ---- */
+    .cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 14px; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--eb-border);
+      border-radius: 8px;
+      padding: 16px;
+      transition: border-color 0.2s;
+    }
+    .card:hover { border-color: var(--eb-accent); }
+    .card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; }
+    .card-name { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--eb-muted); }
+    .card-badge { font-size: 10px; font-weight: 600; padding: 2px 6px; border-radius: 3px; }
+    .card-badge.us { background: #1e3a5f; color: #60a5fa; }
+    .card-badge.eu { background: #1e3a2f; color: #4ade80; }
+    .card-price { font-size: 22px; font-weight: 800; font-family: var(--font-mono); color: #fff; margin-bottom: 4px; }
+    .card-change { font-size: 14px; font-weight: 700; font-family: var(--font-mono); }
+    .card-change.up { color: var(--eb-up); }
+    .card-change.down { color: var(--eb-down); }
+    .card-desc { font-size: 12px; color: var(--eb-muted); margin-top: 8px; line-height: 1.5; }
+    .card-ticker { font-family: var(--font-mono); font-size: 11px; color: var(--eb-accent2); margin-bottom: 4px; }
+    .movertag { font-size: 10px; background: #2d1f0a; color: var(--eb-accent2); padding: 2px 6px; border-radius: 3px; display: inline-block; margin-top: 6px; font-weight: 600; }
+
+    /* ---- TRADINGVIEW MINI WIDGET ---- */
+    .tv-widget { margin-top: 8px; border-radius: 4px; overflow: hidden; }
+
+    /* ---- STOCKS GRID ---- */
+    .stocks-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px; }
+    .stock-card {
+      background: var(--card-bg);
+      border: 1px solid var(--eb-border);
+      border-radius: 8px;
+      padding: 14px;
+    }
+    .stock-card:hover { border-color: var(--eb-accent); }
+    .stock-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px; }
+    .stock-ticker { font-family: var(--font-mono); font-size: 15px; font-weight: 800; color: #fff; }
+    .stock-change { font-family: var(--font-mono); font-size: 14px; font-weight: 700; }
+    .stock-change.up { color: var(--eb-up); }
+    .stock-change.down { color: var(--eb-down); }
+    .stock-name { font-size: 11px; color: var(--eb-muted); margin-bottom: 6px; }
+    .stock-desc { font-size: 12px; color: var(--eb-text); line-height: 1.5; }
+
+    /* ---- MACRO TABLE ---- */
+    .macro-table { width: 100%; border-collapse: collapse; }
+    .macro-table th {
+      text-align: left; font-size: 10px; text-transform: uppercase; letter-spacing: 1px;
+      color: var(--eb-muted); padding: 8px 12px; border-bottom: 1px solid var(--eb-border);
+    }
+    .macro-table td { padding: 10px 12px; border-bottom: 1px solid var(--eb-border); font-size: 13px; }
+    .macro-table tr:last-child td { border-bottom: none; }
+    .macro-table tr:hover td { background: var(--card-bg); }
+    .macro-tag { font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 3px; text-transform: uppercase; letter-spacing: 0.5px; }
+    .macro-tag.beat { background: #14532d; color: #4ade80; }
+    .macro-tag.miss { background: #450a0a; color: #f87171; }
+    .macro-tag.met  { background: #1e3254; color: #93c5fd; }
+    .macro-insight {
+      background: var(--card-bg);
+      border-left: 3px solid var(--eb-accent);
+      border-radius: 0 6px 6px 0;
+      padding: 14px 16px;
+      margin-top: 14px;
+      font-size: 13px;
+      color: var(--eb-text);
+      line-height: 1.6;
+    }
+
+    /* ---- DAY AHEAD ---- */
+    .ahead-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .ahead-item {
+      background: var(--card-bg);
+      border: 1px solid var(--eb-border);
+      border-radius: 6px;
+      padding: 12px 16px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    .ahead-time { font-family: var(--font-mono); font-size: 12px; font-weight: 700; color: var(--eb-accent2); flex-shrink: 0; width: 80px; margin-top: 2px; }
+    .ahead-content { flex: 1; }
+    .ahead-event { font-size: 13px; font-weight: 700; color: #fff; margin-bottom: 2px; }
+    .ahead-detail { font-size: 12px; color: var(--eb-muted); }
+    .tag.key { background: #3b1f00; color: var(--eb-accent2); font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 3px; text-transform: uppercase; margin-left: 8px; vertical-align: middle; }
+
+    /* ---- SOCIAL BUZZ ---- */
+    .buzz-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; }
+    .buzz-card {
+      background: var(--card-bg);
+      border: 1px solid var(--eb-border);
+      border-radius: 8px;
+      padding: 14px;
+    }
+    .buzz-header { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+    .buzz-topic { font-size: 13px; font-weight: 700; color: #fff; }
+    .buzz-sentiment { font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 3px; text-transform: uppercase; letter-spacing: 0.5px; }
+    .buzz-sentiment.bullish { background: #14532d; color: #4ade80; }
+    .buzz-sentiment.bearish { background: #450a0a; color: #f87171; }
+    .buzz-sentiment.chaotic { background: #3b1f00; color: var(--eb-accent2); }
+    .buzz-detail { font-size: 12px; color: var(--eb-muted); line-height: 1.5; }
+
+    /* ---- FINTWIT / SOCIAL ---- */
+    .social-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    @media (max-width: 640px) { .social-grid { grid-template-columns: 1fr; } }
+    .social-card {
+      background: var(--card-bg);
+      border: 1px solid var(--eb-border);
+      border-radius: 8px;
+      padding: 16px;
+    }
+    .social-card-title { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--eb-accent); margin-bottom: 12px; }
+    .tweet-author { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+    .tweet-avatar {
+      width: 36px; height: 36px; background: var(--eb-blue);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-weight: 800; color: var(--eb-accent2); font-size: 13px; flex-shrink: 0;
+    }
+    .tweet-author-info .name { font-weight: 700; font-size: 13px; color: #fff; }
+    .tweet-author-info .handle { font-size: 11px; color: var(--eb-muted); }
+    .tweet-body { font-size: 13px; color: var(--eb-text); line-height: 1.6; margin-bottom: 10px; }
+    .tweet-stats { display: flex; gap: 16px; }
+    .tweet-stat { font-size: 11px; color: var(--eb-muted); }
+    .tweet-stat span { color: var(--eb-text); font-weight: 600; }
+    .chart-title { font-weight: 700; font-size: 14px; color: #fff; margin-bottom: 4px; }
+    .chart-handle { font-size: 11px; color: var(--eb-accent2); margin-bottom: 8px; }
+    .chart-desc { font-size: 12px; color: var(--eb-muted); line-height: 1.5; }
+
+    /* ---- FOOTER ---- */
+    .footer {
+      margin-top: 48px;
+      padding-top: 20px;
+      border-top: 1px solid var(--eb-border);
+      font-size: 11px;
+      color: var(--eb-muted);
+      line-height: 1.7;
+    }
+    .footer strong { color: var(--eb-text); }
+
+    /* ---- UNUSUAL MOVER NOTE ---- */
+    .unusual-note {
+      background: #1a1200;
+      border: 1px solid #3b2c00;
+      border-radius: 6px;
+      padding: 10px 14px;
+      margin-top: 14px;
+      font-size: 12px;
+      color: var(--eb-accent2);
+    }
+    .unusual-note::before { content: "* "; font-weight: 700; }
+
+    /* ---- FX COMMENTARY ---- */
+    .fx-commentary {
+      margin-top: 14px;
+      font-size: 12px;
+      color: var(--eb-muted);
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+
+<!-- MASTHEAD -->
+<header class="masthead">
+  <div class="masthead-brand">
+    <div class="masthead-logo">8B</div>
+    <div>
+      <div class="masthead-name">Eight Bell</div>
+      <div class="masthead-sub">Daily Markets Brief</div>
+    </div>
+  </div>
+  <div class="masthead-date">
+    <div class="weekday">Friday</div>
+    <div class="datestr">13 March 2026</div>
+  </div>
+</header>
+
+<div class="wrapper">
+
+  <!-- HEADLINE -->
+  <div class="headline">
+    <p>Iran holds Hormuz, WTI holds $96, and private credit cracks start showing - bulls buying the dip into key data day.</p>
+  </div>
+
+  <!-- OVERNIGHT -->
+  <section class="section">
+    <div class="section-title">Overnight</div>
+    <ul class="overnight-list">
+      <li>
+        <span class="label">Asia</span>
+        <span class="text">Nikkei slid -1.54% to 54,177 - Japan staring down an oil import bill that could add 0.4pp to CPI by summer. Exporters caught between weak yen tailwinds and energy cost headwinds.</span>
+      </li>
+      <li>
+        <span class="label">US Close</span>
+        <span class="text">S&amp;P 500 fell -1.52% to 6,672 and Nasdaq shed -1.78% to 22,311 on Thursday - both at lowest since November. Financials led lower after Morgan Stanley capped redemptions on its $8B private credit fund.</span>
+      </li>
+      <li>
+        <span class="label">Commodities</span>
+        <span class="text">WTI touched $97 intraday before easing to ~$96 - up 25%+ since Operation Epic Fury began. Gold holding above $5,000 despite profit-taking pressure from a surging dollar. IEA's record 400M-barrel emergency release got a collective shrug from oil markets.</span>
+      </li>
+      <li>
+        <span class="label">Geopolitics</span>
+        <span class="text">New Supreme Leader Mojtaba Khamenei vowed Strait of Hormuz stays closed, shredding hopes of a near-term de-escalation. US and Israeli airstrikes on Iranian military infrastructure continued overnight. G7 emergency call scheduled for this weekend.</span>
+      </li>
+    </ul>
+  </section>
+
+  <!-- FINTWIT + CHART OF THE DAY -->
+  <section class="section">
+    <div class="section-title">Fintwit Pick &amp; Chart of the Day</div>
+    <div class="social-grid">
+      <div class="social-card">
+        <div class="social-card-title">Fintwit Pick</div>
+        <div class="tweet-author">
+          <div class="tweet-avatar">ZH</div>
+          <div class="tweet-author-info">
+            <div class="name">ZeroHedge</div>
+            <div class="handle">@zerohedge</div>
+          </div>
+        </div>
+        <div class="tweet-body">
+          "Morgan Stanley capping private credit redemptions at 5% while investors wanted 11%+ out. BlackRock already did the same last week. This is not a drill. Who's next? KKR, Blue Owl already sliding. The private credit unwind is accelerating."
+        </div>
+        <div class="tweet-stats">
+          <div class="tweet-stat">Likes <span>14.2K</span></div>
+          <div class="tweet-stat">Reposts <span>4.1K</span></div>
+          <div class="tweet-stat">Views <span>2.3M</span></div>
+        </div>
+      </div>
+      <div class="social-card">
+        <div class="social-card-title">Chart of the Day</div>
+        <div class="chart-title">WTI Crude: 90-Day Price Surge</div>
+        <div class="chart-handle">@HFTAlert / @TaviCosta</div>
+        <div class="chart-desc">
+          The most-shared chart on financial X today - WTI crude's relentless climb from $67 to $97 in under 6 weeks, annotated with each escalation point in the Iran conflict. Being called "the most consequential commodity chart since 2022."
+        </div>
+        <div class="tv-widget" id="chart-widget">
+          <!-- TradingView Mini Widget -->
+          <div class="tradingview-widget-container" style="height:140px;">
+            <div id="tv_chart_wti"><div style="width: 100%; height: 130px;"><style>
+	.tradingview-widget-copyright {
+		font-size: 13px !important;
+		line-height: 32px !important;
+		text-align: center !important;
+		vertical-align: middle !important;
+		/* @mixin sf-pro-display-font; */
+		font-family: -apple-system, BlinkMacSystemFont, 'Trebuchet MS', Roboto, Ubuntu, sans-serif !important;
+		color: #B2B5BE !important;
+	}
+
+	.tradingview-widget-copyright .blue-text {
+		color: #2962FF !important;
+	}
+
+	.tradingview-widget-copyright a {
+		text-decoration: none !important;
+		color: #B2B5BE !important;
+	}
+
+	.tradingview-widget-copyright a:visited {
+		color: #B2B5BE !important;
+	}
+
+	.tradingview-widget-copyright a:hover .blue-text {
+		color: #1E53E5 !important;
+	}
+
+	.tradingview-widget-copyright a:active .blue-text {
+		color: #1848CC !important;
+	}
+
+	.tradingview-widget-copyright a:visited .blue-text {
+		color: #2962FF !important;
+	}
+	</style><iframe scrolling="no" allowtransparency="true" frameborder="0" src="./Eight Bell - Daily Markets - 13 March 2026_files/saved_resource.html" title="mini symbol-overview TradingView widget" lang="en" style="user-select: none; box-sizing: border-box; display: block; height: 100%; width: 100%;"></iframe></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EQUITIES -->
+  <section class="section">
+    <div class="section-title">Equities</div>
+    <div class="cards-grid">
+
+      <div class="card">
+        <div class="card-header">
+          <span class="card-name">S&amp;P 500</span>
+          <span class="card-badge us">US</span>
+        </div>
+        <div class="card-price">6,687</div>
+        <div class="card-change up">+0.22%</div>
+        <div class="card-desc">Dip-buyers stepping in after Thursday's -1.52% flush. Vol still elevated. AMEX:SPY</div>
+        <div class="tv-widget">
+          <div class="tradingview-widget-container" style="height:60px;">
+            <div id="tv_spy"><div style="width: 100%; height: 60px;"><style>
+	.tradingview-widget-copyright {
+		font-size: 13px !important;
+		line-height: 32px !important;
+		text-align: center !important;
+		vertical-align: middle !important;
+		/* @mixin sf-pro-display-font; */
+		font-family: -apple-system, BlinkMacSystemFont, 'Trebuchet MS', Roboto, Ubuntu, sans-serif !important;
+		color: #B2B5BE !important;
+	}
+
+	.tradingview-widget-copyright .blue-text {
+		color: #2962FF !important;
+	}
+
+	.tradingview-widget-copyright a {
+		text-decoration: none !important;
+		color: #B2B5BE !important;
+	}
+
+	.tradingview-widget-copyright a:visited {
+		color: #B2B5BE !important;
+	}
+
+	.tradingview-widget-copyright a:hover .blue-text {
+		color: #1E53E5 !important;
+	}
+
+	.tradingview-widget-copyright a:active .blue-text {
+		color: #1848CC !important;
+	}
+
+	.tradingview-widget-copyright a:visited .blue-text {
+		color: #2962FF !important;
+	}
+	</style><iframe scrolling="no" allowtransparency="true" frameborder="0" src="./Eight Bell - Daily Markets - 13 March 2026_files/saved_resource(1).html" title="mini symbol-overview TradingView widget" lang="en" style="user-select: none; box-sizing: border-box; display: block; height: 100%; width: 100%;"></iframe></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <span class="card-name">NASDAQ</span>
+          <span class="card-badge us">US</span>
+        </div>
+        <div class="card-price">22,378</div>
+        <div class="card-change up">+0.30%</div>
+        <div class="card-desc">Tech bouncing but rate-cut hopes fading fast. NASDAQ:QQQ</div>
+        <div class="tv-widget">
+          <div class="tradingview-widget-container" style="height:60px;">
+            <div id="tv_qqq"><div style="width: 100%; height: 60px;"><style>
+	.tradingview-widget-copyright {
+		font-size: 13px !important;
+		line-height: 32px !important;
+		text-align: center !important;
+		vertical-align: middle !important;
+		/* @mixin sf-pro-display-font; */
+		font-family: -apple-system, BlinkMacSystemFont, 'Trebuchet MS', Roboto, Ubuntu, sans-serif !important;
+		color: #B2B5BE !important;
+	}
+
+	.tradingview-widget-copyright .blue-text {
+		color: #2962FF !important;
+	}
+
+	.tradingview-widget-copyright a {
+		text-decoration: none !important;
+		color: #B2B5BE !important;
+	}
+
+	.tradingview-widget-copyright a:visited {
+		color: #B2B5BE !important;
+	}
+
+	.tradingview-widget-copyright a:hover .blue-text {
+		color: #1E53E5 !important;
+	}
+
+	.tradingview-widget-copyright a:active .blue-text {
+		color: #1848CC !important;
+	}
+
+	.tradingview-widget-copyright a:visited .blue-text {
+		color: #2962FF !important;
+	}
+	</style><iframe scrolling="no" allowtransparency="true" frameborder="0" src="./Eight Bell - Daily Markets - 13 March 2026_files/saved_resource(2).html" title="mini symbol-overview TradingView widget" lang="en" style="user-select: none; box-sizing: border-box; display: block; height: 100%; width: 100%;"></iframe></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <span class="card-name">Nikkei 225</span>
+          <span class="card-badge">JP</span>
+        </div>
+        <div class="card-price">54,177</div>
+        <div class="card-change down">-1.54%</div>
+        <div class="card-desc">Biggest loser among majors - Japan imports 90% of its oil. AMEX:EWJ</div>
+        <div class="tv-widget">
+          <div class="tradingview-widget-container" style="height:60px;">
+            <div id="tv_ewj"><div style="width: 100%; height: 60px;"><style>
+	.tradingview-widget-copyright {
+		font-size: 13px !important;
+		line-height: 32px !important;
+		text-align: center !important;
+		vertical-align: middle !important;
+		/* @mixin sf-pro-display-font; */
+		font-family: -apple-system, BlinkMacSystemFont, 'Trebuchet MS', Roboto, Ubuntu, sans-serif !important;
+		color: #B2B5BE !important;
+	}
+
+	.tradingview-widget-copyright .blue-text {
+		color: #2962FF !important;
+	}
+
+	.tradingview-widget-copyright a {
+		text-decoration: none !important;
+		color: #B2B5BE !important;
+	}
+
+	.tradingview-widget-copyright a:visited {
+		color: #B2B5BE !important;
+	}
+
+	.tradingview-widget-copyright a:hover .blue-text {
+		color: #1E53E5 !important;
+	}
+
+	.tradingview-widget-copyright a:active .blue-text {
+		color: #1848CC !important;
+	}
+
+	.tradingview-widget-copyright a:visited .blue-text {
+		color: #2962FF !important;
+	}
+	</style><iframe scrolling="no" allowtransparency="true" frameborder="0" src="./Eight Bell - Daily Markets - 13 March 2026_files/saved_resource(3).html" title="mini symbol-overview TradingView widget" lang="en" style="user-select: none; box-sizing: border-box; display: block; height: 100%; width: 100%;"></iframe></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <span class="card-name">Euro Stoxx 50</span>
+          <span class="card-badge eu">EU</span>
+        </div>
+        <div class="card-price">5,794</div>
+        <div class="card-change down">-0.73%</div>
+        <div class="card-desc">EU equities pressured by energy costs and ECB hawkishness. PEPPERSTONE:EU50</div>
+        <div class="tv-widget">
+          <div class="tradingview-widget-container" style="height:60px;">
+            <div id="tv_eu50"><div style="width: 100%; height: 60px;"><style>
+	.tradingview-widget-copyright {
+		font-size: 13px !important;
+		line-height: 32px !important;
+		text-align: center !important;
+		vertical-align: middle !important;
+		/* @mixin sf-pro-display-font; */
+		font-family: -apple-system, BlinkMacSystemFont, 'Trebuchet MS', Roboto, Ubuntu, sans-serif !important;
+		color: #B2B5BE !important;
+	}
+
+	.tradingview-widget-copyright .blue-text {
+		color: #2962FF !important;
+	}
+
+	.tradingview-widget-copyright a {
+		text-decoration: none !important;
+		color: #B2B5BE !important;
+	}
+
+	.tradingview-widget-copyright a:visited {
+		color: #B2B5BE !important;
+	}
+
+	.tradingview-widget-copyright a:hover .blue-text {
+		color: #1E53E5 !important;
+	}
+
+	.tradingview-widget-copyright a:active .blue-text {
+		color: #1848CC !important;
+	}
+
+	.tradingview-widget-copyright a:visited .blue-text {
+		color: #2962FF !important;
+	}
+	</style><iframe scrolling="no" allowtransparency="true" frameborder="0" src="./Eight Bell - Daily Markets - 13 March 2026_files/saved_resource(4).html" title="mini symbol-overview TradingView widget" lang="en" style="user-select: none; box-sizing: border-box; display: block; height: 100%; width: 100%;"></iframe></div></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="unusual-note">Nikkei leads global declines with -1.54%, widest spread vs. US in 3 months. Japan's current account deficit is set to blow out if crude stays above $90 for another quarter.</div>
+  </section>
+
+  <!-- SINGLE STOCKS -->
+  <section class="section">
+    <div class="section-title">Single Stocks</div>
+    <div class="stocks-grid">
+
+      <div class="stock-card">
+        <div class="stock-header">
+          <span class="stock-ticker">CVX</span>
+          <span class="stock-change up">+2.90%</span>
+        </div>
+        <div class="stock-name">Chevron Corp. <span class="card-badge us" style="font-size:10px;">US</span></div>
+        <div class="stock-desc">Riding oil's coattails all the way to all-time highs. Chevron is up 23% YTD and traders are screaming "stay long until Hormuz reopens." Energy major printing money on every barrel outside the conflict zone. <em>NYSE:CVX</em></div>
+      </div>
+
+      <div class="stock-card">
+        <div class="stock-header">
+          <span class="stock-ticker">XOM</span>
+          <span class="stock-change up">+2.40%</span>
+        </div>
+        <div class="stock-name">Exxon Mobil Corp. <span class="card-badge us" style="font-size:10px;">US</span></div>
+        <div class="stock-desc">Goldman's favorite Iran-war trade keeps delivering. Exxon margins expanding on every tick higher in crude. Integrated model means it wins on production AND refining as gasoline prices surge stateside. <em>NYSE:XOM</em></div>
+      </div>
+
+      <div class="stock-card">
+        <div class="stock-header">
+          <span class="stock-ticker">MS</span>
+          <span class="stock-change down">-4.10%</span>
+        </div>
+        <div class="stock-name">Morgan Stanley <span class="card-badge us" style="font-size:10px;">US</span></div>
+        <div class="stock-desc">Investors wanted 11% of the North Haven Private Income Fund back - Morgan Stanley returned less than half. Stock at lows since October. The private credit gating story is now a contagion narrative and MS is Patient Zero. <em>NYSE:MS</em></div>
+      </div>
+
+      <div class="stock-card">
+        <div class="stock-header">
+          <span class="stock-ticker">TTE</span>
+          <span class="stock-change up">+1.85%</span>
+        </div>
+        <div class="stock-name">TotalEnergies SE <span class="card-badge eu" style="font-size:10px;">EU</span></div>
+        <div class="stock-desc">Europe's oil major outperforming peers as Brent trades near $100. Trading desks rerouting LNG cargoes around the Gulf at hefty premiums - pure margin. Dividends getting richer with every pipeline that stays offline in the region. <em>EURONEXT:TTE</em></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FX -->
+  <section class="section">
+    <div class="section-title">FX</div>
+    <div class="cards-grid">
+
+      <div class="card">
+        <div class="card-header">
+          <span class="card-name">EUR / USD</span>
+          <span class="card-badge eu">EU</span>
+        </div>
+        <div class="card-price">1.1520</div>
+        <div class="card-change down">-0.41%</div>
+        <div class="card-desc">Euro hitting its weakest level since late November. ECB hawkishness offering only limited support as energy import shock dominates.</div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <span class="card-name">USD / CAD</span>
+          <span class="card-badge">FX</span>
+        </div>
+        <div class="card-ticker">OANDA:USDCAD</div>
+        <div class="card-price">1.3330</div>
+        <div class="card-change down">-0.62%</div>
+        <div class="card-desc">Canadian dollar is this week's surprise outperformer. Canada pumping plenty of oil that isn't going through Hormuz, and traders are pricing that premium in.</div>
+        <div class="movertag">Biggest Mover</div>
+      </div>
+
+    </div>
+    <div class="fx-commentary">Dollar index (DXY) pushing toward 2-month highs as safe-haven bids override everything. EUR and JPY both weaker; petro-currencies CAD and NOK gaining ground.</div>
+  </section>
+
+  <!-- COMMODITIES -->
+  <section class="section">
+    <div class="section-title">Commodities</div>
+    <div class="cards-grid">
+
+      <div class="card">
+        <div class="card-header">
+          <span class="card-name">WTI Crude</span>
+          <span class="card-badge">ENERGY</span>
+        </div>
+        <div class="card-ticker">AMEX:USO</div>
+        <div class="card-price">$96.34</div>
+        <div class="card-change up"><span>▲</span> +3.8%</div>
+        <div class="card-desc">$97 print intraday. Hormuz blockade holding, IEA emergency reserves are a band-aid on a bullet wound. Goldman target: $110 if the strait stays closed another month.</div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <span class="card-name">Gold</span>
+          <span class="card-badge">METALS</span>
+        </div>
+        <div class="card-ticker">OANDA:XAUUSD</div>
+        <div class="card-price">$5,094</div>
+        <div class="card-change down"><span>▼</span> -1.25%</div>
+        <div class="card-desc">Profit-taking knocking gold off record highs as dollar surges, but the $5,000 floor is holding. Bulls say geopolitical risk premium isn't going anywhere; bears see rate-hike risk as the bigger threat.</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- MACRO -->
+  <section class="section">
+    <div class="section-title">Macro</div>
+    <table class="macro-table">
+      <thead>
+        <tr>
+          <th>Indicator</th>
+          <th>Actual vs. Expected</th>
+          <th>Result</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>US CPI (Feb) YoY</td>
+          <td>2.4% vs 2.4% expected</td>
+          <td><span class="macro-tag met">Met</span></td>
+        </tr>
+        <tr>
+          <td>US CPI (Feb) MoM</td>
+          <td>+0.3% vs +0.3% expected</td>
+          <td><span class="macro-tag met">Met</span></td>
+        </tr>
+        <tr>
+          <td>Eurozone CPI (Feb) Flash</td>
+          <td>2.6% vs 2.7% expected</td>
+          <td><span class="macro-tag beat">Beat</span></td>
+        </tr>
+        <tr>
+          <td>US Initial Jobless Claims</td>
+          <td>218K vs 225K expected</td>
+          <td><span class="macro-tag beat">Beat</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="macro-insight">
+      Inflation prints are cooperating for now - US CPI right on consensus, Eurozone even slightly below. That would normally be gold for rate-cut bulls, but the oil shock is running a separate playbook. Every $10 rise in crude adds roughly 0.2pp to US CPI with a 6-week lag. At $96 WTI, forward inflation expectations are creeping north again, and that's keeping the Fed firmly on hold. Jobless claims besting expectations by 7K tells you the labor market hasn't cracked yet - stagflation risk is the word on every strategist's lips right now.
+    </div>
+  </section>
+
+  <!-- DAY AHEAD -->
+  <section class="section">
+    <div class="section-title">Day Ahead</div>
+    <ul class="ahead-list">
+      <li class="ahead-item">
+        <span class="ahead-time">14:30 CET</span>
+        <div class="ahead-content">
+          <div class="ahead-event">Q4 GDP (2nd Estimate) <span class="tag key">KEY</span></div>
+          <div class="ahead-detail">Consensus +2.3% annualized. First major revision - any downward surprise fuels recession talk on top of the oil shock.</div>
+        </div>
+      </li>
+      <li class="ahead-item">
+        <span class="ahead-time">14:30 CET</span>
+        <div class="ahead-content">
+          <div class="ahead-event">Jan PCE Price Index <span class="tag key">KEY</span></div>
+          <div class="ahead-detail">Fed's preferred inflation gauge. Core consensus at +2.6% YoY. A hot print seals the deal on no cuts in H1 2026.</div>
+        </div>
+      </li>
+      <li class="ahead-item">
+        <span class="ahead-time">16:00 CET</span>
+        <div class="ahead-content">
+          <div class="ahead-event">UMich Consumer Sentiment (Mar Prelim) <span class="tag key">KEY</span></div>
+          <div class="ahead-detail">Watch inflation expectations component closely. War fatigue and $5 gas may have rattled confidence sharply.</div>
+        </div>
+      </li>
+      <li class="ahead-item">
+        <span class="ahead-time">19:00 CET</span>
+        <div class="ahead-content">
+          <div class="ahead-event">Baker Hughes Rig Count</div>
+          <div class="ahead-detail">Weekly US oil drilling activity. A jump here signals producers capitalizing on $96 crude - potentially a medium-term supply response.</div>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <!-- SOCIAL BUZZ -->
+  <section class="section">
+    <div class="section-title">Socials Buzz</div>
+    <div class="buzz-list">
+
+      <div class="buzz-card">
+        <div class="buzz-header">
+          <span class="buzz-topic">#HormuzBlockade</span>
+          <span class="buzz-sentiment bearish">Bearish</span>
+        </div>
+        <div class="buzz-detail">New supreme leader vowing a closed Strait is the dominant Fintwit topic - energy bulls and macro bears in open warfare over whether $110 oil breaks the economy before it breaks Iran.</div>
+      </div>
+
+      <div class="buzz-card">
+        <div class="buzz-header">
+          <span class="buzz-topic">Private Credit Gates</span>
+          <span class="buzz-sentiment bearish">Bearish</span>
+        </div>
+        <div class="buzz-detail">Morgan Stanley and BlackRock both capping redemptions in one week. "Who's next" is trending hard. KKR, Blue Owl, and Ares are all getting tagged in concerned threads about credit quality and transparency.</div>
+      </div>
+
+      <div class="buzz-card">
+        <div class="buzz-header">
+          <span class="buzz-topic">Gold $5,000 Floor</span>
+          <span class="buzz-sentiment chaotic">Chaotic</span>
+        </div>
+        <div class="buzz-detail">Lively debate over whether $5,000 becomes structural support. Bulls say geopolitical risk is permanent; bears counter that a strong dollar and potential rate hikes make the level fragile heading into next week.</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <strong>Eight Bell Markets Brief</strong> - Friday, 13 March 2026.<br>
+    This brief is produced for informational purposes only and does not constitute financial advice. All market data reflects conditions as of early European session. Data sources: CNBC, Bloomberg, Trading Economics, BLS, BEA, Reuters. Market prices are indicative and subject to change.<br>
+    <br>
+    <em>Note: Fintwit pick content reflects market narrative synthesis; verify specific tweet URLs directly on X/Twitter. TradingView widgets load live data in-browser.</em>
+  </footer>
+
+</div><!-- /wrapper -->
+
+<script>
+  /* ============================================================
+     EIGHT BELL DAILY MARKETS BRIEF — TRADINGVIEW WIDGET LOADER
+     DO NOT MODIFY
+  ============================================================ */
+  (function() {
+    var widgets = [
+      { id: 'tv_spy',    symbol: 'AMEX:SPY',          height: 60  },
+      { id: 'tv_qqq',    symbol: 'NASDAQ:QQQ',         height: 60  },
+      { id: 'tv_ewj',    symbol: 'AMEX:EWJ',           height: 60  },
+      { id: 'tv_eu50',   symbol: 'PEPPERSTONE:EU50',   height: 60  },
+      { id: 'tv_chart_wti', symbol: 'AMEX:USO',        height: 130 }
+    ];
+
+    function loadWidget(cfg) {
+      var el = document.getElementById(cfg.id);
+      if (!el) return;
+      var s = document.createElement('script');
+      s.src = 'https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js';
+      s.async = true;
+      s.innerHTML = JSON.stringify({
+        symbol: cfg.symbol,
+        width: '100%',
+        height: cfg.height,
+        locale: 'en',
+        dateRange: '1M',
+        colorTheme: 'dark',
+        trendLineColor: 'rgba(201,168,76,1)',
+        underLineColor: 'rgba(201,168,76,0.15)',
+        isTransparent: true,
+        autosize: true,
+        largeChartUrl: ''
+      });
+      el.appendChild(s);
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', function() {
+        widgets.forEach(loadWidget);
+      });
+    } else {
+      widgets.forEach(loadWidget);
+    }
+  })();
+</script>
+
+
+
+</body></html>
