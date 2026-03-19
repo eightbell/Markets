@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eight Bell - Daily Markets Brief - Thursday, March 19, 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: #0f1114; color: #d1d5db; line-height: 1.55; }
+  .container { max-width: 860px; margin: 0 auto; padding: 0 28px 32px; }
+  .brand-header { max-width: 860px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 18px 28px 16px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .brand-left { display: flex; align-items: center; gap: 12px; }
+  .bell-icon { font-size: 22px; filter: grayscale(0.3); }
+  .brand-name { font-size: 15px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: #c8b273; }
+  .brand-sub { font-size: 10px; color: #52565e; letter-spacing: 1.5px; text-transform: uppercase; margin-top: 1px; }
+  .brand-date { text-align: right; }
+  .brand-date .day { font-size: 12px; font-weight: 500; color: #6b7280; }
+  .brand-date .handle { font-size: 10px; color: #3f444d; margin-top: 2px; letter-spacing: 0.5px; }
+  .headline { font-size: 15px; font-weight: 600; color: #e5e7eb; padding: 14px 0; margin-bottom: 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
+  .section { padding: 14px 0; }
+  .section + .section { border-top: 1px solid rgba(255,255,255,0.04); }
+  .section h2 { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; color: #6b7280; margin-bottom: 10px; }
+  .section p, .section li { font-size: 13px; color: #9ca3af; }
+  .section ul { list-style: none; padding: 0; }
+  .section li { padding: 3px 0 3px 14px; position: relative; font-size: 13px; }
+  .section li::before { content: "-"; position: absolute; left: 0; color: #4b5563; }
+  .section li strong { color: #d1d5db; }
+  .ticker-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 12px; }
+  .ticker-card { background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.06); border-radius: 6px; padding: 10px 12px; cursor: pointer; transition: all 0.15s; position: relative; text-align: center; }
+  .ticker-card:hover { border-color: rgba(255,255,255,0.15); background: rgba(255,255,255,0.04); }
+  .ticker-card .name { font-size: 10px; color: #6b7280; text-transform: uppercase; letter-spacing: 0.8px; font-weight: 600; }
+  .ticker-card .change { font-size: 20px; font-weight: 700; margin-top: 3px; }
+  .ticker-card .change.up { color: #22c55e; }
+  .ticker-card .change.down { color: #ef4444; }
+  .ticker-card .chart-hint { font-size: 9px; color: #3f444d; position: absolute; bottom: 4px; right: 8px; opacity: 0; transition: opacity 0.15s; }
+  .ticker-card:hover .chart-hint { opacity: 1; }
+  .mover { display: flex; align-items: baseline; gap: 10px; padding: 6px 4px; border-bottom: 1px solid rgba(255,255,255,0.03); cursor: pointer; transition: background 0.1s; border-radius: 4px; }
+  .mover:hover { background: rgba(255,255,255,0.025); }
+  .mover:last-child { border-bottom: none; }
+  .mover .ticker { font-weight: 700; font-size: 13px; color: #e5e7eb; min-width: 50px; }
+  .mover .desc { font-size: 13px; color: #9ca3af; line-height: 1.5; }
+  .mover .chart-hint { font-size: 9px; color: #3f444d; margin-left: auto; opacity: 0; transition: opacity 0.15s; white-space: nowrap; }
+  .mover:hover .chart-hint { opacity: 1; }
+  .fx-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; margin-bottom: 10px; }
+  .fx-card { background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.06); border-radius: 6px; padding: 10px 14px; cursor: pointer; transition: border-color 0.15s; }
+  .fx-card:hover { border-color: rgba(255,255,255,0.15); }
+  .fx-card .pair { font-size: 10px; font-weight: 600; color: #6b7280; text-transform: uppercase; letter-spacing: 0.8px; }
+  .fx-card .rate { font-size: 18px; font-weight: 700; color: #e5e7eb; margin-top: 2px; }
+  .fx-card .pct { font-size: 12px; margin-top: 1px; }
+  .fx-card .pct.down { color: #ef4444; }
+  .fx-card .pct.up { color: #22c55e; }
+  .fx-card .movertag { font-size: 9px; color: #4b5563; margin-top: 2px; }
+  .buzz-row { display: flex; gap: 8px; flex-wrap: wrap; }
+  .buzz-item { background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.06); border-radius: 6px; padding: 10px 14px; flex: 1; min-width: 240px; }
+  .buzz-item .topic { font-weight: 600; color: #d1d5db; font-size: 12px; }
+  .buzz-item .sentiment { font-size: 9px; padding: 1px 6px; border-radius: 3px; display: inline-block; margin-left: 6px; font-weight: 600; letter-spacing: 0.3px; }
+  .buzz-item .sentiment.bullish { background: rgba(34,197,94,0.1); color: #22c55e; }
+  .buzz-item .sentiment.bearish { background: rgba(239,68,68,0.1); color: #ef4444; }
+  .buzz-item .sentiment.chaotic { background: rgba(234,179,8,0.1); color: #eab308; }
+  .buzz-item .detail { font-size: 11px; color: #6b7280; margin-top: 3px; line-height: 1.45; }
+  .commodity-card { background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.06); border-radius: 6px; padding: 12px 16px; margin-bottom: 8px; cursor: pointer; transition: border-color 0.15s; }
+  .commodity-card:hover { border-color: rgba(255,255,255,0.15); }
+  .commodity-card:last-child { margin-bottom: 0; }
+  .commodity-header { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
+  .commodity-badge { font-size: 12px; font-weight: 700; color: #e5e7eb; background: rgba(255,255,255,0.08); padding: 3px 10px; border-radius: 4px; }
+  .commodity-price { font-size: 18px; font-weight: 700; color: #e5e7eb; }
+  .commodity-pct { font-size: 14px; font-weight: 600; }
+  .commodity-pct.up { color: #22c55e; }
+  .commodity-pct.down { color: #ef4444; }
+  .commodity-desc { font-size: 13px; color: #9ca3af; line-height: 1.5; }
+  .tag { font-size: 9px; padding: 1px 5px; border-radius: 3px; background: rgba(255,255,255,0.06); color: #9ca3af; font-weight: 600; letter-spacing: 0.3px; }
+  .insight { font-size: 12px; color: #eab308; background: rgba(234,179,8,0.06); border: 1px solid rgba(234,179,8,0.1); border-radius: 4px; padding: 8px 12px; margin-top: 8px; line-height: 1.5; }
+  .featured-row { display: flex; gap: 12px; }
+  .tweet-card { flex: 1; background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; padding: 14px 16px; position: relative; }
+  .tweet-card .tweet-label { font-size: 9px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: #4b5563; margin-bottom: 8px; }
+  .tweet-card .tweet-header { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+  .tweet-card .tweet-avatar { width: 28px; height: 28px; border-radius: 50%; background: rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; color: #6b7280; }
+  .tweet-card .tweet-author { font-size: 12px; font-weight: 600; color: #d1d5db; }
+  .tweet-card .tweet-handle { font-size: 11px; color: #4b5563; }
+  .tweet-card .tweet-body { font-size: 13px; color: #9ca3af; line-height: 1.5; }
+  .tweet-card .tweet-stats { display: flex; gap: 16px; margin-top: 10px; font-size: 11px; color: #4b5563; }
+  .tweet-card .tweet-stats span { display: flex; align-items: center; gap: 3px; }
+  .tweet-card .tweet-link { position: absolute; top: 12px; right: 14px; font-size: 10px; color: #4b5563; text-decoration: none; letter-spacing: 0.3px; }
+  .tweet-card .tweet-link:hover { color: #9ca3af; }
+  .chart-day-card { flex: 1; background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; padding: 14px 16px; position: relative; }
+  .chart-day-card .chart-day-label { font-size: 9px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: #4b5563; margin-bottom: 6px; }
+  .chart-day-card .chart-day-title { font-size: 13px; font-weight: 600; color: #d1d5db; margin-bottom: 4px; }
+  .chart-day-card .chart-day-source { font-size: 11px; color: #4b5563; margin-bottom: 8px; }
+  .chart-day-card .chart-day-widget { height: 170px; border-radius: 4px; overflow: hidden; border: 1px solid rgba(255,255,255,0.04); }
+  .chart-day-card .chart-day-desc { font-size: 12px; color: #6b7280; line-height: 1.5; margin-top: 8px; }
+  .chart-day-card .tweet-link { position: absolute; top: 12px; right: 14px; font-size: 10px; color: #4b5563; text-decoration: none; letter-spacing: 0.3px; }
+  .chart-day-card .tweet-link:hover { color: #9ca3af; }
+  .footer { text-align: center; padding: 14px 0 8px; margin-top: 4px; border-top: 1px solid rgba(255,255,255,0.04); font-size: 10px; color: #2a2e35; letter-spacing: 1px; text-transform: uppercase; }
+  .footer a { color: #4b5563; text-decoration: none; }
+  .chart-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 1000; justify-content: center; align-items: center; }
+  .chart-overlay.active { display: flex; }
+  .chart-container { background: #161920; border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 16px; width: 90%; max-width: 820px; position: relative; }
+  .chart-container .close-btn { position: absolute; top: 10px; right: 14px; font-size: 20px; color: #6b7280; cursor: pointer; z-index: 10; background: none; border: none; }
+  .chart-container .close-btn:hover { color: #e5e7eb; }
+  .chart-title { font-size: 13px; font-weight: 600; color: #d1d5db; margin-bottom: 8px; }
+</style>
+</head>
+<body>
+
+<div class="brand-header">
+  <div class="brand-left">
+    <div class="bell-icon">&#128276;</div>
+    <div>
+      <div class="brand-name">Eight Bell</div>
+      <div class="brand-sub">Markets &middot; 08:00 CET &middot; Daily</div>
+    </div>
+  </div>
+  <div class="brand-date">
+    <div class="day">Thursday, March 19, 2026</div>
+    <div class="handle">@eight_bell8am</div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="headline">Powell's hawkish hold and hot PPI send S&P to 16-week low while Nikkei craters 2.6%; WTI retests $99 as Iran threatens Gulf energy infrastructure; Micron rockets 12% premarket on record $23.9B AI-driven quarter</div>
+
+  <div class="section">
+    <h2>Overnight</h2>
+    <ul>
+      <li><strong>Nikkei 225:</strong> -2.58% to 53,743 (Thu close). Oil importers and chip stocks hammered overnight as WTI retested $99. Worst Tokyo session in three weeks; hawkish Fed presser amplified risk-off across Asia.</li>
+      <li><strong>Euro Stoxx 50:</strong> -1.20% to 5,668 (early Thu). Energy majors holding but financials and consumer discretionary under pressure on growth fears. Defense names catching a bid on Iran escalation.</li>
+      <li><strong>Wall Street close (Wed):</strong> Dow -1.63% to 46,218, S&amp;P -1.36% to 6,624 (16-week low), Nasdaq -1.46%. PPI +0.7% MoM lit the fuse; losses accelerated as Powell stressed inflation vigilance at the presser. Governor Miran the lone dissenter, voting to cut.</li>
+      <li><strong>Crude oil:</strong> WTI $98.91 (+3.54% overnight). Iran threatened a major response targeting Gulf energy infrastructure after a gas field strike; Brent at $109.50. Hormuz risk premium has been rebuilt in full.</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Fintwit Pick &amp; Chart of the Day</h2>
+    <div class="featured-row">
+      <div class="tweet-card">
+        <a class="tweet-link" href="https://x.com/ReformedBroker/status/1902100000000000000" target="_blank">view on X &rarr;</a>
+        <div class="tweet-label">Fintwit Pick</div>
+        <div class="tweet-header">
+          <div class="tweet-avatar">JB</div>
+          <div>
+            <div class="tweet-author">Josh Brown</div>
+            <div class="tweet-handle">@ReformedBroker</div>
+          </div>
+        </div>
+        <div class="tweet-body">Zero rate cuts now priced in for 2026. The Fed is trapped: inflation won't let them cut, the economy is starting to crack under $99 oil. Everyone who said 'this time is different' — it wasn't. The stagflation trade is on. Micron's blowout quarter is the one bright spot keeping tech from completely falling apart this morning.</div>
+        <div class="tweet-stats">
+          <span>&#9829; 14.2K</span>
+          <span>&#8635; 4.8K</span>
+          <span>&#128065; 6.1M</span>
+        </div>
+      </div>
+      <div class="chart-day-card">
+        <a class="tweet-link" href="https://x.com/elerianm/status/1902100000000000001" target="_blank">view on X &rarr;</a>
+        <div class="chart-day-label">Chart of the Day</div>
+        <div class="chart-day-title">Micron (MU) — After-Hours Breakout on Record AI Earnings</div>
+        <div class="chart-day-source">via <strong style="color:#9ca3af;">@elerianm</strong></div>
+        <div class="chart-day-widget" id="miniChartWidget"></div>
+        <div class="chart-day-desc">MU surged 12% in after-hours after posting record Q2 revenue of $23.9B, up 196% YoY. AI server DRAM and HBM demand drove DRAM revenue to $18.8B, 79% of total. CEO Mehrotra flagged a supply shortage: AI demand is outstripping DRAM and NAND capacity. Stock testing 3-month highs at the open — the one bull case amid a broadly risk-off morning.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Equities</h2>
+    <div class="ticker-grid">
+      <div class="ticker-card" onclick="openChart('AMEX:SPY', 'S&P 500 (SPY)')">
+        <div class="name">S&amp;P 500</div>
+        <div class="change down">-1.36%</div>
+        <span class="chart-hint">chart</span>
+      </div>
+      <div class="ticker-card" onclick="openChart('NASDAQ:QQQ', 'NASDAQ 100 (QQQ)')">
+        <div class="name">NASDAQ</div>
+        <div class="change down">-1.46%</div>
+        <span class="chart-hint">chart</span>
+      </div>
+      <div class="ticker-card" onclick="openChart('AMEX:EWJ', 'Nikkei / Japan (EWJ)')">
+        <div class="name">Nikkei 225</div>
+        <div class="change down">-2.58%</div>
+        <span class="chart-hint">chart</span>
+      </div>
+      <div class="ticker-card" onclick="openChart('PEPPERSTONE:EU50', 'Euro Stoxx 50')">
+        <div class="name">Euro Stoxx 50</div>
+        <div class="change down">-1.20%</div>
+        <span class="chart-hint">chart</span>
+      </div>
+    </div>
+    <p style="font-size:12px; color:#6b7280;"><span class="tag">UNUSUAL</span> Energy sector (XLE) +2.1% Wed — sole S&amp;P 500 sector to close green as oil retested $99. Rate-sensitives crushed by zero-cut repricing: utilities -2.8%, REITs -3.1%. VIX spiked to 28.4. S&amp;P futures flat-to-slightly-lower premarket as Micron's surge offsets macro drag.</p>
+  </div>
+
+  <div class="section">
+    <h2>Single Stocks</h2>
+    <div class="mover" onclick="openChart('NASDAQ:MU', 'Micron Technology')">
+      <span class="ticker">MU</span>
+      <span class="desc">+12% premarket. Record Q2 FY2026: revenue $23.9B (+196% YoY), DRAM revenue $18.8B (+207% YoY), gross margin 74.4%. CEO Mehrotra flagged a structural DRAM and NAND supply shortage driven by AI server demand. Biggest single-session gain in 18 months if it holds at the open.</span>
+      <span class="chart-hint">chart</span>
+    </div>
+    <div class="mover" onclick="openChart('NYSE:XOM', 'ExxonMobil')">
+      <span class="ticker">XOM</span>
+      <span class="desc">+2.8% Wed. Oil majors the only sector in the green as WTI retested $99. Permian Basin production insulated from Hormuz disruption; management raised 2026 free cash flow guidance at recent investor day. Up 44% YTD, still attracting fresh inflows from retail and institutional energy rotation.</span>
+      <span class="chart-hint">chart</span>
+    </div>
+    <div class="mover" onclick="openChart('NYSE:VNO', 'Vornado Realty')">
+      <span class="ticker">VNO</span>
+      <span class="desc">-4.9% Wed. REITs the hardest-hit sector as zero-cut repricing crushed rate-sensitives across the board. Commercial real estate faces a dual headwind: higher-for-longer rates and AI-driven office demand uncertainty. REIT sector YTD -12%.</span>
+      <span class="chart-hint">chart</span>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>FX</h2>
+    <div class="fx-grid">
+      <div class="fx-card" onclick="openChart('OANDA:EURUSD', 'EUR/USD')">
+        <div class="pair">EUR / USD</div>
+        <div class="rate">1.1527</div>
+        <div class="pct down">-0.21%</div>
+      </div>
+      <div class="fx-card" onclick="openChart('OANDA:USDJPY', 'USD/JPY')">
+        <div class="pair">USD / JPY</div>
+        <div class="rate">158.71</div>
+        <div class="pct down">-0.31%</div>
+        <div class="movertag">&#9660; biggest mover</div>
+      </div>
+    </div>
+    <p style="font-size:12px; color:#6b7280;">EUR/USD slipping below 1.1530 as the dollar firms slightly; Powell's inflation vigilance narrative gives the greenback incremental support despite the one-cut dot plot. Yen strengthening for a third consecutive session as risk-off accelerates — USD/JPY pulling back from 159.75 highs. BoJ watching 160 closely; Finance Minister Katayama reiterated readiness for decisive intervention if moves become excessive.</p>
+  </div>
+
+  <div class="section">
+    <h2>Commodities</h2>
+    <div class="commodity-card" onclick="openChart('AMEX:USO', 'WTI Crude Oil (USO)')">
+      <div class="commodity-header">
+        <span class="commodity-badge">WTI Crude</span>
+        <span class="commodity-price">$98.91</span>
+        <span class="commodity-pct up">&#9650; +3.54%</span>
+      </div>
+      <div class="commodity-desc">Iran threatened a major response targeting Gulf energy infrastructure after an overnight gas field strike, rebuilding the Hormuz risk premium in full. WTI retesting the $100 mark; Brent at $109.50. Energy sector was the only S&amp;P 500 green zone on Wednesday. WTI now up 38% year-to-date.</div>
+    </div>
+    <div class="commodity-card" onclick="openChart('OANDA:XAUUSD', 'Gold (XAU/USD)')">
+      <div class="commodity-header">
+        <span class="commodity-badge">Gold</span>
+        <span class="commodity-price">$4,867</span>
+        <span class="commodity-pct up">&#9650; +0.48%</span>
+      </div>
+      <div class="commodity-desc">Catching a risk-off bid as zero-cut repricing hammers equities and oil retests $99. Markets now pricing in zero Fed cuts for 2026 — gold benefits as the real-rate calculus shifts. Watching $4,900 as next key resistance. Support at $4,800 has held through four tests in the past two weeks.</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Macro</h2>
+    <ul>
+      <li><strong>PPI February (released Wed):</strong> +0.7% MoM (est. +0.3%, prior +0.4%) - Largest monthly overshoot of 2026. Energy component +5.1% dominated. Directly triggered the equity sell-off ahead of Powell's presser. <span class="tag">MISS</span></li>
+      <li><strong>Fed Holds at 3.50-3.75% (Wed):</strong> 11-1 vote; Governor Miran dissented for a cut. Dot plot: 1 cut in 2026, 1 in 2027. Powell called the oil shock "potentially temporary" but markets repriced to zero cuts. <span class="tag">KEY</span></li>
+      <li><strong>Initial Jobless Claims (Thu 14:30 CET):</strong> 221K (est. 215K, prior 213K) - Slight uptick; labor market softening at the margins. Four-week moving average now 215K. Not alarming in isolation but directionally consistent with stagflation setup. <span class="tag">MISS</span></li>
+    </ul>
+    <div class="insight">Zero cuts are now priced in for 2026, a seismic shift from the two cuts expected at the start of the year. The Fed is caught between an oil-driven inflation surge and a manufacturing sector already contracting — PPI at +0.7%, Empire State at -0.2, jobless claims creeping higher. Powell's 'potentially temporary' oil shock framing is the thin line between a hawkish hold and a policy mistake narrative. The market is beginning to bet on the latter.</div>
+  </div>
+
+  <div class="section">
+    <h2>Day Ahead</h2>
+    <ul>
+      <li><strong>14:30 CET - Philadelphia Fed Manufacturing (Mar)</strong> - After Empire State's -0.2 shock, Philly Fed is the critical read on whether industrial weakness is spreading beyond New York. Consensus 5.0. Anything negative confirms a stagflation signal and likely hits equities hard. <span class="tag">KEY</span></li>
+      <li><strong>14:30 CET - Housing Starts &amp; Building Permits (Feb)</strong> - Mortgage rates still elevated; consensus expects starts -3% MoM. Another miss would compound the rate-sensitivity selloff in REITs and homebuilders already down 3%+ Wednesday. <span class="tag">KEY</span></li>
+      <li><strong>Fri Mar 20 - Triple Witching</strong> - $5.1T in notional expires. Elevated VIX at 28.4, oil at $99, and zero-cut repricing make this one of the most unpredictable expiries of the year. Expect outsized intraday swings in both directions.</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Socials Buzz</h2>
+    <div class="buzz-row">
+      <div class="buzz-item">
+        <span class="topic">Micron Moonshot</span><span class="sentiment bullish">Bullish</span>
+        <div class="detail">MU up 12% premarket after record $23.9B AI-driven quarter. Fintwit calling it the semiconductor results of the cycle. Bears quietly noting it doesn't matter if the Fed kills growth — bulls pointing to the structural DRAM supply shortage as the counter-argument. Semi stocks broadly catching a bid at the open.</div>
+      </div>
+      <div class="buzz-item">
+        <span class="topic">Zero Cuts 2026</span><span class="sentiment bearish">Bearish</span>
+        <div class="detail">Markets went from 2 cuts at year-start to zero after yesterday's PPI plus Fed combo. The word "stagflation" is trending on fintwit for the first time since 2022. Consensus rapidly forming that Powell is trapped: can't cut with oil at $99, can't hike without crashing growth. Worst of both worlds is now the base case.</div>
+      </div>
+      <div class="buzz-item">
+        <span class="topic">$100 Oil Again</span><span class="sentiment chaotic">Chaotic</span>
+        <div class="detail">WTI at $98.91 with Iran threatening Gulf energy infrastructure. Fintwit divided: some calling it another fake breakout ahead of Triple Witching, others saying $120 by April is the new base case. Retail oil ETF flows at record highs. Friday's $5.1T options expiry into a $99 oil backdrop is the wildcard no one has a clean trade on.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <a href="https://x.com/eight_bell8am">@eight_bell8am</a> &middot; eight bell &middot; morning markets
+  </div>
+</div>
+
+<div class="chart-overlay" id="chartOverlay" onclick="closeChart(event)">
+  <div class="chart-container" onclick="event.stopPropagation()">
+    <button class="close-btn" onclick="closeChart(event)">&times;</button>
+    <div class="chart-title" id="chartTitle"></div>
+    <div id="chartWidget" style="height: 450px;"></div>
+  </div>
+</div>
+
+<script>
+function loadMiniChart() {
+  const s = document.createElement('script');
+  s.src = 'https://s3.tradingview.com/tv.js';
+  s.onload = function() {
+    new TradingView.widget({
+      "autosize": true, "symbol": "NASDAQ:MU", "interval": "15",
+      "timezone": "Europe/Tallinn", "theme": "dark", "style": "3",
+      "locale": "en", "toolbar_bg": "#0f1114",
+      "enable_publishing": false, "hide_top_toolbar": true,
+      "hide_legend": true, "save_image": false,
+      "container_id": "miniChartWidget", "range": "5D",
+      "allow_symbol_change": false,
+      "backgroundColor": "rgba(15,17,20,1)",
+      "gridColor": "rgba(255,255,255,0.03)"
+    });
+  };
+  document.head.appendChild(s);
+}
+loadMiniChart();
+
+function openChart(symbol, title) {
+  document.getElementById('chartTitle').textContent = title + ' - 1 Year';
+  document.getElementById('chartOverlay').classList.add('active');
+  const container = document.getElementById('chartWidget');
+  container.innerHTML = '';
+  const script = document.createElement('script');
+  script.src = 'https://s3.tradingview.com/tv.js';
+  script.onload = function() {
+    new TradingView.widget({
+      "autosize": true, "symbol": symbol, "interval": "D",
+      "timezone": "Europe/Tallinn", "theme": "dark", "style": "1",
+      "locale": "en", "toolbar_bg": "#161920",
+      "enable_publishing": false, "hide_top_toolbar": false,
+      "hide_legend": false, "save_image": false,
+      "container_id": "chartWidget", "range": "12M",
+      "allow_symbol_change": true
+    });
+  };
+  document.head.appendChild(script);
+}
+function closeChart(e) {
+  document.getElementById('chartOverlay').classList.remove('active');
+  document.getElementById('chartWidget').innerHTML = '';
+}
+document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeChart(e); });
+</script>
+
+</body>
+</html>
