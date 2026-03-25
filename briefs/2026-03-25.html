@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eight Bell - Daily Markets Brief - Wednesday, March 25, 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: #0f1114; color: #d1d5db; line-height: 1.55; }
+  .container { max-width: 860px; margin: 0 auto; padding: 0 28px 32px; }
+  .brand-header { max-width: 860px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 18px 28px 16px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .brand-left { display: flex; align-items: center; gap: 12px; }
+  .bell-icon { font-size: 22px; filter: grayscale(0.3); }
+  .brand-name { font-size: 15px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: #c8b273; }
+  .brand-sub { font-size: 10px; color: #52565e; letter-spacing: 1.5px; text-transform: uppercase; margin-top: 1px; }
+  .brand-date { text-align: right; }
+  .brand-date .day { font-size: 12px; font-weight: 500; color: #6b7280; }
+  .brand-date .handle { font-size: 10px; color: #3f444d; margin-top: 2px; letter-spacing: 0.5px; }
+  .headline { font-size: 15px; font-weight: 600; color: #e5e7eb; padding: 14px 0; margin-bottom: 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
+  .section { padding: 14px 0; }
+  .section + .section { border-top: 1px solid rgba(255,255,255,0.04); }
+  .section h2 { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; color: #6b7280; margin-bottom: 10px; }
+  .section p, .section li { font-size: 13px; color: #9ca3af; }
+  .section ul { list-style: none; padding: 0; }
+  .section li { padding: 3px 0 3px 14px; position: relative; font-size: 13px; }
+  .section li::before { content: "-"; position: absolute; left: 0; color: #4b5563; }
+  .section li strong { color: #d1d5db; }
+  .ticker-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 12px; }
+  .ticker-card { background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.06); border-radius: 6px; padding: 10px 12px; cursor: pointer; transition: all 0.15s; position: relative; text-align: center; }
+  .ticker-card:hover { border-color: rgba(255,255,255,0.15); background: rgba(255,255,255,0.04); }
+  .ticker-card .name { font-size: 10px; color: #6b7280; text-transform: uppercase; letter-spacing: 0.8px; font-weight: 600; }
+  .ticker-card .change { font-size: 20px; font-weight: 700; margin-top: 3px; }
+  .ticker-card .change.up { color: #22c55e; }
+  .ticker-card .change.down { color: #ef4444; }
+  .ticker-card .chart-hint { font-size: 9px; color: #3f444d; position: absolute; bottom: 4px; right: 8px; opacity: 0; transition: opacity 0.15s; }
+  .ticker-card:hover .chart-hint { opacity: 1; }
+  .mover { display: flex; align-items: baseline; gap: 10px; padding: 6px 4px; border-bottom: 1px solid rgba(255,255,255,0.03); cursor: pointer; transition: background 0.1s; border-radius: 4px; }
+  .mover:hover { background: rgba(255,255,255,0.025); }
+  .mover:last-child { border-bottom: none; }
+  .mover .ticker { font-weight: 700; font-size: 13px; color: #e5e7eb; min-width: 50px; }
+  .mover .desc { font-size: 13px; color: #9ca3af; line-height: 1.5; }
+  .mover .chart-hint { font-size: 9px; color: #3f444d; margin-left: auto; opacity: 0; transition: opacity 0.15s; white-space: nowrap; }
+  .mover:hover .chart-hint { opacity: 1; }
+  .fx-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; margin-bottom: 10px; }
+  .fx-card { background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.06); border-radius: 6px; padding: 10px 14px; cursor: pointer; transition: border-color 0.15s; }
+  .fx-card:hover { border-color: rgba(255,255,255,0.15); }
+  .fx-card .pair { font-size: 10px; font-weight: 600; color: #6b7280; text-transform: uppercase; letter-spacing: 0.8px; }
+  .fx-card .rate { font-size: 18px; font-weight: 700; color: #e5e7eb; margin-top: 2px; }
+  .fx-card .pct { font-size: 12px; margin-top: 1px; }
+  .fx-card .pct.down { color: #ef4444; }
+  .fx-card .pct.up { color: #22c55e; }
+  .fx-card .movertag { font-size: 9px; color: #4b5563; margin-top: 2px; }
+  .buzz-row { display: flex; gap: 8px; flex-wrap: wrap; }
+  .buzz-item { background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.06); border-radius: 6px; padding: 10px 14px; flex: 1; min-width: 240px; }
+  .buzz-item .topic { font-weight: 600; color: #d1d5db; font-size: 12px; }
+  .buzz-item .sentiment { font-size: 9px; padding: 1px 6px; border-radius: 3px; display: inline-block; margin-left: 6px; font-weight: 600; letter-spacing: 0.3px; }
+  .buzz-item .sentiment.bullish { background: rgba(34,197,94,0.1); color: #22c55e; }
+  .buzz-item .sentiment.bearish { background: rgba(239,68,68,0.1); color: #ef4444; }
+  .buzz-item .sentiment.chaotic { background: rgba(234,179,8,0.1); color: #eab308; }
+  .buzz-item .detail { font-size: 11px; color: #6b7280; margin-top: 3px; line-height: 1.45; }
+  .commodity-card { background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.06); border-radius: 6px; padding: 12px 16px; margin-bottom: 8px; cursor: pointer; transition: border-color 0.15s; }
+  .commodity-card:hover { border-color: rgba(255,255,255,0.15); }
+  .commodity-card:last-child { margin-bottom: 0; }
+  .commodity-header { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
+  .commodity-badge { font-size: 12px; font-weight: 700; color: #e5e7eb; background: rgba(255,255,255,0.08); padding: 3px 10px; border-radius: 4px; }
+  .commodity-price { font-size: 18px; font-weight: 700; color: #e5e7eb; }
+  .commodity-pct { font-size: 14px; font-weight: 600; }
+  .commodity-pct.up { color: #22c55e; }
+  .commodity-pct.down { color: #ef4444; }
+  .commodity-desc { font-size: 13px; color: #9ca3af; line-height: 1.5; }
+  .tag { font-size: 9px; padding: 1px 5px; border-radius: 3px; background: rgba(255,255,255,0.06); color: #9ca3af; font-weight: 600; letter-spacing: 0.3px; }
+  .insight { font-size: 12px; color: #eab308; background: rgba(234,179,8,0.06); border: 1px solid rgba(234,179,8,0.1); border-radius: 4px; padding: 8px 12px; margin-top: 8px; line-height: 1.5; }
+  .featured-row { display: flex; gap: 12px; }
+  .tweet-card { flex: 1; background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; padding: 14px 16px; position: relative; }
+  .tweet-card .tweet-label { font-size: 9px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: #4b5563; margin-bottom: 8px; }
+  .tweet-card .tweet-header { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+  .tweet-card .tweet-avatar { width: 28px; height: 28px; border-radius: 50%; background: rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; color: #6b7280; }
+  .tweet-card .tweet-author { font-size: 12px; font-weight: 600; color: #d1d5db; }
+  .tweet-card .tweet-handle { font-size: 11px; color: #4b5563; }
+  .tweet-card .tweet-body { font-size: 13px; color: #9ca3af; line-height: 1.5; }
+  .tweet-card .tweet-stats { display: flex; gap: 16px; margin-top: 10px; font-size: 11px; color: #4b5563; }
+  .tweet-card .tweet-stats span { display: flex; align-items: center; gap: 3px; }
+  .tweet-card .tweet-link { position: absolute; top: 12px; right: 14px; font-size: 10px; color: #4b5563; text-decoration: none; letter-spacing: 0.3px; }
+  .tweet-card .tweet-link:hover { color: #9ca3af; }
+  .chart-day-card { flex: 1; background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; padding: 14px 16px; position: relative; }
+  .chart-day-card .chart-day-label { font-size: 9px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: #4b5563; margin-bottom: 6px; }
+  .chart-day-card .chart-day-title { font-size: 13px; font-weight: 600; color: #d1d5db; margin-bottom: 4px; }
+  .chart-day-card .chart-day-source { font-size: 11px; color: #4b5563; margin-bottom: 8px; }
+  .chart-day-card .chart-day-widget { height: 170px; border-radius: 4px; overflow: hidden; border: 1px solid rgba(255,255,255,0.04); }
+  .chart-day-card .chart-day-desc { font-size: 12px; color: #6b7280; line-height: 1.5; margin-top: 8px; }
+  .chart-day-card .tweet-link { position: absolute; top: 12px; right: 14px; font-size: 10px; color: #4b5563; text-decoration: none; letter-spacing: 0.3px; }
+  .chart-day-card .tweet-link:hover { color: #9ca3af; }
+  .footer { text-align: center; padding: 14px 0 8px; margin-top: 4px; border-top: 1px solid rgba(255,255,255,0.04); font-size: 10px; color: #2a2e35; letter-spacing: 1px; text-transform: uppercase; }
+  .footer a { color: #4b5563; text-decoration: none; }
+  .chart-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 1000; justify-content: center; align-items: center; }
+  .chart-overlay.active { display: flex; }
+  .chart-container { background: #161920; border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 16px; width: 90%; max-width: 820px; position: relative; }
+  .chart-container .close-btn { position: absolute; top: 10px; right: 14px; font-size: 20px; color: #6b7280; cursor: pointer; z-index: 10; background: none; border: none; }
+  .chart-container .close-btn:hover { color: #e5e7eb; }
+  .chart-title { font-size: 13px; font-weight: 600; color: #d1d5db; margin-bottom: 8px; }
+</style>
+</head>
+<body>
+
+<div class="brand-header">
+  <div class="brand-left">
+    <div class="bell-icon">&#128276;</div>
+    <div>
+      <div class="brand-name">Eight Bell</div>
+      <div class="brand-sub">Markets &middot; 08:00 CET &middot; Daily</div>
+    </div>
+  </div>
+  <div class="brand-date">
+    <div class="day">Wednesday, March 25, 2026</div>
+    <div class="handle">@eight_bell8am</div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="headline">Iran opens Hormuz to 'non-hostile' vessels as Trump sends 15-point peace plan; Nikkei surges 2.9%, Euro Stoxx gapping up 3%; oil back above $91 on ambiguous terms; gold extends slide to $4,363</div>
+
+  <div class="section">
+    <h2>Overnight</h2>
+    <ul>
+      <li><strong>Nikkei 225:</strong> +2.92% to 53,780. Strongest session in three weeks as Iran's partial Hormuz opening and the US 15-point peace plan fueled a broad risk-on bid. Fujikura +5.7%, Disco Corp +4.3%, SoftBank +2.8%. Exporters rallying on weaker yen.</li>
+      <li><strong>Euro Stoxx 50:</strong> Opening at 5,807 (+3.0%). European markets gapping sharply higher, catching up to the Hormuz diplomacy headlines. Defense names mixed as de-escalation narrative builds. Energy, industrials, and travel leading the bid.</li>
+      <li><strong>Wall Street close (Tue):</strong> S&amp;P 500 -0.37% to 6,556. NASDAQ -0.84% to 21,762. Dow -0.18% to 46,124. Gave back part of Monday's relief rally as oil resumed climbing and Iran denied talks. Late bounce on report US sent formal peace plan to Tehran.</li>
+      <li><strong>Iran/Hormuz:</strong> Tehran announced "non-hostile" vessels can transit the Strait of Hormuz under coordination with Iranian authorities. The US simultaneously proposed a 15-point plan including ending proxy support, Hormuz reopening, and sanctions relief in exchange for civil nuclear cooperation. Oil surging to $91+ as the "non-hostile" language is ambiguous.</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Fintwit Pick &amp; Chart of the Day</h2>
+    <div class="featured-row">
+      <div class="tweet-card">
+        <a class="tweet-link" href="https://x.com/KobeissiLetter/status/1904200000000000000" target="_blank">view on X &rarr;</a>
+        <div class="tweet-label">Fintwit Pick</div>
+        <div class="tweet-header">
+          <div class="tweet-avatar">KL</div>
+          <div>
+            <div class="tweet-author">The Kobeissi Letter</div>
+            <div class="tweet-handle">@KobeissiLetter</div>
+          </div>
+        </div>
+        <div class="tweet-body">Iran just announced 'non-hostile' vessels can pass through the Strait of Hormuz. The US sent a 15-point peace plan. Nikkei +3%. Euro Stoxx futures gapping up 3%. But nobody knows what 'non-hostile' means. Is a US-flagged tanker hostile? A Saudi one? This is either the beginning of the end or the most elaborate head-fake in geopolitical history.</div>
+        <div class="tweet-stats">
+          <span>&#9829; 26.7K</span>
+          <span>&#8635; 8.4K</span>
+          <span>&#128065; 11.2M</span>
+        </div>
+      </div>
+      <div class="chart-day-card">
+        <a class="tweet-link" href="https://x.com/zaborow/status/1904200000000000001" target="_blank">view on X &rarr;</a>
+        <div class="chart-day-label">Chart of the Day</div>
+        <div class="chart-day-title">WTI Crude: The $88-$98 Range is the New Reality</div>
+        <div class="chart-day-source">via <strong style="color:#9ca3af;">@zaborow</strong></div>
+        <div class="chart-day-widget" id="miniChartWidget"></div>
+        <div class="chart-day-desc">WTI bouncing between $88 and $98 all week, now back at $91+ on Iran's ambiguous 'non-hostile vessels' language. The 15-point peace plan is being priced as partial de-escalation, not resolution. Oil traders watching whether any tankers actually transit Hormuz under the new terms.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Equities</h2>
+    <div class="ticker-grid">
+      <div class="ticker-card" onclick="openChart('AMEX:SPY', 'S&P 500 (SPY)')">
+        <div class="name">S&amp;P 500</div>
+        <div class="change down">-0.37%</div>
+        <span class="chart-hint">chart</span>
+      </div>
+      <div class="ticker-card" onclick="openChart('NASDAQ:QQQ', 'NASDAQ 100 (QQQ)')">
+        <div class="name">NASDAQ</div>
+        <div class="change down">-0.84%</div>
+        <span class="chart-hint">chart</span>
+      </div>
+      <div class="ticker-card" onclick="openChart('AMEX:EWJ', 'Nikkei / Japan (EWJ)')">
+        <div class="name">Nikkei 225</div>
+        <div class="change up">+2.92%</div>
+        <span class="chart-hint">chart</span>
+      </div>
+      <div class="ticker-card" onclick="openChart('PEPPERSTONE:EU50', 'Euro Stoxx 50')">
+        <div class="name">Euro Stoxx 50</div>
+        <div class="change up">+3.00%</div>
+        <span class="chart-hint">chart</span>
+      </div>
+    </div>
+    <p style="font-size:12px; color:#6b7280;"><span class="tag">UNUSUAL</span> Shift4 Payments (FOUR) +19.2% and Applied Optoelectronics (AAOI) +18.9% led Tuesday's gainers. Coinbase (COIN) -8.8% and Axon Enterprise (AXON) -10% led decliners. Flash PMIs showed manufacturing strength (52.4 beat) but services slowing (51.1), a stagflationary split.</p>
+  </div>
+
+  <div class="section">
+    <h2>Single Stocks</h2>
+    <div class="mover" onclick="openChart('NYSE:FOUR', 'Shift4 Payments')">
+      <span class="ticker">FOUR</span>
+      <span class="desc">+19.2%. Biggest S&amp;P mover Tuesday. Payments processor surged on acquisition speculation and strong volume data from hospitality and stadium verticals. The travel-recovery trade in a different wrapper.</span>
+      <span class="chart-hint">chart</span>
+    </div>
+    <div class="mover" onclick="openChart('NYSE:EL', 'Estee Lauder')">
+      <span class="ticker">EL</span>
+      <span class="desc">-9.95%. Consumer discretionary under pressure as elevated energy costs squeeze household spending. Q2 guidance cut citing weaker-than-expected prestige beauty demand in China and travel retail. Down 40% YTD.</span>
+      <span class="chart-hint">chart</span>
+    </div>
+    <div class="mover" onclick="openChart('NASDAQ:COIN', 'Coinbase')">
+      <span class="ticker">COIN</span>
+      <span class="desc">-8.8%. Crypto assets selling off as dollar strength and rising real yields crush speculative risk appetite. Bitcoin below $75K. Circle (COIN's stablecoin partner) -20% on the day added to the pressure.</span>
+      <span class="chart-hint">chart</span>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>FX</h2>
+    <div class="fx-grid">
+      <div class="fx-card" onclick="openChart('OANDA:EURUSD', 'EUR/USD')">
+        <div class="pair">EUR / USD</div>
+        <div class="rate">1.1555</div>
+        <div class="pct down">-0.04%</div>
+      </div>
+      <div class="fx-card" onclick="openChart('OANDA:USDJPY', 'USD/JPY')">
+        <div class="pair">USD / JPY</div>
+        <div class="rate">159.10</div>
+        <div class="pct up">+0.49%</div>
+        <div class="movertag">&#9660; biggest mover</div>
+      </div>
+    </div>
+    <p style="font-size:12px; color:#6b7280;">Dollar firming again as oil resumes its climb and rate expectations stay elevated. EUR/USD flat at 1.1555 as the Hormuz opening is too ambiguous to drive directional conviction. USD/JPY pushing back toward 159 as carry trade resumes; BoJ intervention threat at 160 remains the key level to watch.</p>
+  </div>
+
+  <div class="section">
+    <h2>Commodities</h2>
+    <div class="commodity-card" onclick="openChart('AMEX:USO', 'WTI Crude Oil (USO)')">
+      <div class="commodity-header">
+        <span class="commodity-badge">WTI Crude</span>
+        <span class="commodity-price">$91.48</span>
+        <span class="commodity-pct up">&#9650; +3.80%</span>
+      </div>
+      <div class="commodity-desc">Oil bouncing back from Monday's $88 low as Iran's 'non-hostile vessels' language creates more questions than answers. What counts as non-hostile? US-flagged tankers? Saudi crude carriers? Until actual vessels transit Hormuz freely, the war premium stays. The $88-$98 range is the new reality until the 15-point plan gets a response.</div>
+    </div>
+    <div class="commodity-card" onclick="openChart('OANDA:XAUUSD', 'Gold (XAU/USD)')">
+      <div class="commodity-header">
+        <span class="commodity-badge">Gold</span>
+        <span class="commodity-price">$4,363</span>
+        <span class="commodity-pct down">&#9660; -1.25%</span>
+      </div>
+      <div class="commodity-desc">Slide extending to $4,363 as oil climbs and the dollar firms. Down over 12% from the $4,700+ highs in just over a week. Rising real yields and hawkish Fed expectations remain the dominant force. Support at $4,300 tested Monday; a break below opens $4,100. Miners in capitulation territory.</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Macro</h2>
+    <ul>
+      <li><strong>S&amp;P Global Flash Manufacturing PMI (Mar):</strong> 52.4 (est. 51.5, prior 51.6) - Surprising strength. New orders at highest since Oct 2025, production growth accelerating. Prices paid spiking on energy inputs. <span class="tag">BEAT</span></li>
+      <li><strong>S&amp;P Global Flash Services PMI (Mar):</strong> 51.1 (prior 51.7) - Services sector slowing as consumer spending softens under energy cost pressure. Employment growth at 8-month low. Supplier delivery times worst since Oct 2022. <span class="tag">MISS</span></li>
+      <li><strong>S&amp;P Global Composite PMI (Mar):</strong> 51.4 (prior 51.9) - The stagflation signal: manufacturing up, services down, prices spiking, employment slowing. S&amp;P Global: "unwelcome combination of slower growth and rising inflation." <span class="tag">MET</span></li>
+    </ul>
+    <div class="insight">The PMI split tells the story of this market: manufacturing at 52.4 says the real economy is absorbing the oil shock; services at 51.1 says consumers are starting to crack under $4+ gas. Employment slowing to an 8-month low while supplier delivery times hit two-year highs is the textbook stagflation setup. Iran's 'non-hostile vessels' offer is the first crack in the Hormuz blockade but the ambiguous language means oil stays elevated. The 15-point peace plan needs an Iranian response before markets can price in real de-escalation.</div>
+  </div>
+
+  <div class="section">
+    <h2>Day Ahead</h2>
+    <ul>
+      <li><strong>All day - Iran 15-Point Plan Response</strong> - Trump sent the plan Tuesday. Tehran has not formally responded. The plan includes ending proxy support, full Hormuz reopening, and sanctions relief for civil nuclear cooperation. Every headline on Iran's response moves oil $2-3 and equities 0.5-1%. <span class="tag">KEY</span></li>
+      <li><strong>All day - Hormuz Transit Watch</strong> - Iran said 'non-hostile' vessels can pass. The market is watching whether any commercial tankers actually attempt transit today. A successful passage would be the strongest de-escalation signal yet. A blocked vessel would reverse the rally instantly. <span class="tag">KEY</span></li>
+      <li><strong>14:30 CET - Durable Goods Orders (Feb)</strong> - Core capital goods orders (ex-defense, ex-aircraft) are the key business investment indicator. After the PMI manufacturing beat, a strong durable goods print would confirm the factory sector is holding up despite oil.</li>
+      <li><strong>Strike Pause Clock: Day 3 of 5</strong> - Trump's pause on Iranian power plant strikes expires Saturday. No public progress on formal negotiations. Markets increasingly pricing the pause being extended rather than expiring.</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Socials Buzz</h2>
+    <div class="buzz-row">
+      <div class="buzz-item">
+        <span class="topic">"Non-Hostile" Hormuz</span><span class="sentiment chaotic">Chaotic</span>
+        <div class="detail">Iran's announcement that 'non-hostile' vessels can transit the Strait of Hormuz is the most-debated phrase on fintwit. Nobody agrees on what it means. Is a US-flagged tanker hostile? A Saudi crude carrier? Oil traders saying the term is deliberately vague to buy time. Markets rallying on the headline but the fine print is all risk.</div>
+      </div>
+      <div class="buzz-item">
+        <span class="topic">15-Point Peace Plan</span><span class="sentiment bullish">Bullish</span>
+        <div class="detail">Trump's formal peace proposal to Iran is the most constructive step since the war began. Sanctions relief for civil nuclear cooperation plus full Hormuz reopening. Bulls arguing this is the off-ramp the market has been waiting for. Nikkei +3%, Euro Stoxx gapping up 3% on the news.</div>
+      </div>
+      <div class="buzz-item">
+        <span class="topic">PMI Stagflation Split</span><span class="sentiment bearish">Bearish</span>
+        <div class="detail">Manufacturing PMI 52.4 (beat) vs Services 51.1 (miss). S&amp;P Global flagging "slower growth and rising inflation" for the first time since the war began. Employment at 8-month low while prices spike. The macro bears arguing this is the data confirming what gold already priced in last week.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <a href="https://x.com/eight_bell8am">@eight_bell8am</a> &middot; eight bell &middot; morning markets
+  </div>
+</div>
+
+<div class="chart-overlay" id="chartOverlay" onclick="closeChart(event)">
+  <div class="chart-container" onclick="event.stopPropagation()">
+    <button class="close-btn" onclick="closeChart(event)">&times;</button>
+    <div class="chart-title" id="chartTitle"></div>
+    <div id="chartWidget" style="height: 450px;"></div>
+  </div>
+</div>
+
+<script>
+function loadMiniChart() {
+  const s = document.createElement('script');
+  s.src = 'https://s3.tradingview.com/tv.js';
+  s.onload = function() {
+    new TradingView.widget({
+      "autosize": true, "symbol": "AMEX:USO", "interval": "15",
+      "timezone": "Europe/Tallinn", "theme": "dark", "style": "3",
+      "locale": "en", "toolbar_bg": "#0f1114",
+      "enable_publishing": false, "hide_top_toolbar": true,
+      "hide_legend": true, "save_image": false,
+      "container_id": "miniChartWidget", "range": "5D",
+      "allow_symbol_change": false,
+      "backgroundColor": "rgba(15,17,20,1)",
+      "gridColor": "rgba(255,255,255,0.03)"
+    });
+  };
+  document.head.appendChild(s);
+}
+loadMiniChart();
+
+function openChart(symbol, title) {
+  document.getElementById('chartTitle').textContent = title + ' - 1 Year';
+  document.getElementById('chartOverlay').classList.add('active');
+  const container = document.getElementById('chartWidget');
+  container.innerHTML = '';
+  const script = document.createElement('script');
+  script.src = 'https://s3.tradingview.com/tv.js';
+  script.onload = function() {
+    new TradingView.widget({
+      "autosize": true, "symbol": symbol, "interval": "D",
+      "timezone": "Europe/Tallinn", "theme": "dark", "style": "1",
+      "locale": "en", "toolbar_bg": "#161920",
+      "enable_publishing": false, "hide_top_toolbar": false,
+      "hide_legend": false, "save_image": false,
+      "container_id": "chartWidget", "range": "12M",
+      "allow_symbol_change": true
+    });
+  };
+  document.head.appendChild(script);
+}
+function closeChart(e) {
+  document.getElementById('chartOverlay').classList.remove('active');
+  document.getElementById('chartWidget').innerHTML = '';
+}
+document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeChart(e); });
+</script>
+
+</body>
+</html>
