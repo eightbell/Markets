@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eight Bell - Daily Markets Brief - Wednesday, April 8, 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: #0f1114; color: #d1d5db; line-height: 1.55; }
+  .container { max-width: 860px; margin: 0 auto; padding: 0 28px 32px; }
+  .brand-header { max-width: 860px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 18px 28px 16px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .brand-left { display: flex; align-items: center; gap: 12px; }
+  .bell-icon { font-size: 22px; filter: grayscale(0.3); }
+  .brand-name { font-size: 15px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: #c8b273; }
+  .brand-sub { font-size: 10px; color: #52565e; letter-spacing: 1.5px; text-transform: uppercase; margin-top: 1px; }
+  .brand-date { text-align: right; }
+  .brand-date .day { font-size: 12px; font-weight: 500; color: #6b7280; }
+  .brand-date .handle { font-size: 10px; color: #3f444d; margin-top: 2px; letter-spacing: 0.5px; }
+  .headline { font-size: 15px; font-weight: 600; color: #e5e7eb; padding: 14px 0; margin-bottom: 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
+  .section { padding: 14px 0; }
+  .section + .section { border-top: 1px solid rgba(255,255,255,0.04); }
+  .section h2 { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; color: #6b7280; margin-bottom: 10px; }
+  .section p, .section li { font-size: 13px; color: #9ca3af; }
+  .section ul { list-style: none; padding: 0; }
+  .section li { padding: 3px 0 3px 14px; position: relative; font-size: 13px; }
+  .section li::before { content: "-"; position: absolute; left: 0; color: #4b5563; }
+  .section li strong { color: #d1d5db; }
+  .ticker-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 12px; }
+  .ticker-card { background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.06); border-radius: 6px; padding: 10px 12px; cursor: pointer; transition: all 0.15s; position: relative; text-align: center; }
+  .ticker-card:hover { border-color: rgba(255,255,255,0.15); background: rgba(255,255,255,0.04); }
+  .ticker-card .name { font-size: 10px; color: #6b7280; text-transform: uppercase; letter-spacing: 0.8px; font-weight: 600; }
+  .ticker-card .change { font-size: 20px; font-weight: 700; margin-top: 3px; }
+  .ticker-card .change.up { color: #22c55e; }
+  .ticker-card .change.down { color: #ef4444; }
+  .ticker-card .chart-hint { font-size: 9px; color: #3f444d; position: absolute; bottom: 4px; right: 8px; opacity: 0; transition: opacity 0.15s; }
+  .ticker-card:hover .chart-hint { opacity: 1; }
+  .mover { display: flex; align-items: baseline; gap: 10px; padding: 6px 4px; border-bottom: 1px solid rgba(255,255,255,0.03); cursor: pointer; transition: background 0.1s; border-radius: 4px; }
+  .mover:hover { background: rgba(255,255,255,0.025); }
+  .mover:last-child { border-bottom: none; }
+  .mover .ticker { font-weight: 700; font-size: 13px; color: #e5e7eb; min-width: 50px; }
+  .mover .desc { font-size: 13px; color: #9ca3af; line-height: 1.5; }
+  .mover .chart-hint { font-size: 9px; color: #3f444d; margin-left: auto; opacity: 0; transition: opacity 0.15s; white-space: nowrap; }
+  .mover:hover .chart-hint { opacity: 1; }
+  .fx-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; margin-bottom: 10px; }
+  .fx-card { background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.06); border-radius: 6px; padding: 10px 14px; cursor: pointer; transition: border-color 0.15s; }
+  .fx-card:hover { border-color: rgba(255,255,255,0.15); }
+  .fx-card .pair { font-size: 10px; font-weight: 600; color: #6b7280; text-transform: uppercase; letter-spacing: 0.8px; }
+  .fx-card .rate { font-size: 18px; font-weight: 700; color: #e5e7eb; margin-top: 2px; }
+  .fx-card .pct { font-size: 12px; margin-top: 1px; }
+  .fx-card .pct.down { color: #ef4444; }
+  .fx-card .pct.up { color: #22c55e; }
+  .fx-card .movertag { font-size: 9px; color: #4b5563; margin-top: 2px; }
+  .buzz-row { display: flex; gap: 8px; flex-wrap: wrap; }
+  .buzz-item { background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.06); border-radius: 6px; padding: 10px 14px; flex: 1; min-width: 240px; }
+  .buzz-item .topic { font-weight: 600; color: #d1d5db; font-size: 12px; }
+  .buzz-item .sentiment { font-size: 9px; padding: 1px 6px; border-radius: 3px; display: inline-block; margin-left: 6px; font-weight: 600; letter-spacing: 0.3px; }
+  .buzz-item .sentiment.bullish { background: rgba(34,197,94,0.1); color: #22c55e; }
+  .buzz-item .sentiment.bearish { background: rgba(239,68,68,0.1); color: #ef4444; }
+  .buzz-item .sentiment.chaotic { background: rgba(234,179,8,0.1); color: #eab308; }
+  .buzz-item .detail { font-size: 11px; color: #6b7280; margin-top: 3px; line-height: 1.45; }
+  .commodity-card { background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.06); border-radius: 6px; padding: 12px 16px; margin-bottom: 8px; cursor: pointer; transition: border-color 0.15s; }
+  .commodity-card:hover { border-color: rgba(255,255,255,0.15); }
+  .commodity-card:last-child { margin-bottom: 0; }
+  .commodity-header { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
+  .commodity-badge { font-size: 12px; font-weight: 700; color: #e5e7eb; background: rgba(255,255,255,0.08); padding: 3px 10px; border-radius: 4px; }
+  .commodity-price { font-size: 18px; font-weight: 700; color: #e5e7eb; }
+  .commodity-pct { font-size: 14px; font-weight: 600; }
+  .commodity-pct.up { color: #22c55e; }
+  .commodity-pct.down { color: #ef4444; }
+  .commodity-desc { font-size: 13px; color: #9ca3af; line-height: 1.5; }
+  .tag { font-size: 9px; padding: 1px 5px; border-radius: 3px; background: rgba(255,255,255,0.06); color: #9ca3af; font-weight: 600; letter-spacing: 0.3px; }
+  .insight { font-size: 12px; color: #eab308; background: rgba(234,179,8,0.06); border: 1px solid rgba(234,179,8,0.1); border-radius: 4px; padding: 8px 12px; margin-top: 8px; line-height: 1.5; }
+  .featured-row { display: flex; gap: 12px; }
+  .tweet-card { flex: 1; background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; padding: 14px 16px; position: relative; }
+  .tweet-card .tweet-label { font-size: 9px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: #4b5563; margin-bottom: 8px; }
+  .tweet-card .tweet-header { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+  .tweet-card .tweet-avatar { width: 28px; height: 28px; border-radius: 50%; background: rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; color: #6b7280; }
+  .tweet-card .tweet-author { font-size: 12px; font-weight: 600; color: #d1d5db; }
+  .tweet-card .tweet-handle { font-size: 11px; color: #4b5563; }
+  .tweet-card .tweet-body { font-size: 13px; color: #9ca3af; line-height: 1.5; }
+  .tweet-card .tweet-stats { display: flex; gap: 16px; margin-top: 10px; font-size: 11px; color: #4b5563; }
+  .tweet-card .tweet-stats span { display: flex; align-items: center; gap: 3px; }
+  .tweet-card .tweet-link { position: absolute; top: 12px; right: 14px; font-size: 10px; color: #4b5563; text-decoration: none; letter-spacing: 0.3px; }
+  .tweet-card .tweet-link:hover { color: #9ca3af; }
+  .chart-day-card { flex: 1; background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; padding: 14px 16px; position: relative; }
+  .chart-day-card .chart-day-label { font-size: 9px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: #4b5563; margin-bottom: 6px; }
+  .chart-day-card .chart-day-title { font-size: 13px; font-weight: 600; color: #d1d5db; margin-bottom: 4px; }
+  .chart-day-card .chart-day-source { font-size: 11px; color: #4b5563; margin-bottom: 8px; }
+  .chart-day-card .chart-day-widget { height: 170px; border-radius: 4px; overflow: hidden; border: 1px solid rgba(255,255,255,0.04); }
+  .chart-day-card .chart-day-desc { font-size: 12px; color: #6b7280; line-height: 1.5; margin-top: 8px; }
+  .chart-day-card .tweet-link { position: absolute; top: 12px; right: 14px; font-size: 10px; color: #4b5563; text-decoration: none; letter-spacing: 0.3px; }
+  .chart-day-card .tweet-link:hover { color: #9ca3af; }
+  .footer { text-align: center; padding: 14px 0 8px; margin-top: 4px; border-top: 1px solid rgba(255,255,255,0.04); font-size: 10px; color: #2a2e35; letter-spacing: 1px; text-transform: uppercase; }
+  .footer a { color: #4b5563; text-decoration: none; }
+  .chart-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 1000; justify-content: center; align-items: center; }
+  .chart-overlay.active { display: flex; }
+  .chart-container { background: #161920; border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 16px; width: 90%; max-width: 820px; position: relative; }
+  .chart-container .close-btn { position: absolute; top: 10px; right: 14px; font-size: 20px; color: #6b7280; cursor: pointer; z-index: 10; background: none; border: none; }
+  .chart-container .close-btn:hover { color: #e5e7eb; }
+  .chart-title { font-size: 13px; font-weight: 600; color: #d1d5db; margin-bottom: 8px; }
+</style>
+</head>
+<body>
+
+<div class="brand-header">
+  <div class="brand-left">
+    <div class="bell-icon">&#128276;</div>
+    <div>
+      <div class="brand-name">Eight Bell</div>
+      <div class="brand-sub">Markets &middot; 08:00 CET &middot; Daily</div>
+    </div>
+  </div>
+  <div class="brand-date">
+    <div class="day">Wednesday, April 8, 2026</div>
+    <div class="handle">@eight_bell8am</div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="headline">CEASEFIRE: US-Iran two-week truce reached minutes before Trump's 8PM deadline; oil craters 14% in biggest one-day drop since 1991 Gulf War; Nikkei moonshots +4.95%, KOSPI +5.8%; Dow futures +1,000 points; Strait of Hormuz to reopen; peace talks start Friday in Islamabad</div>
+
+  <div class="section">
+    <h2>Overnight</h2>
+    <ul>
+      <li><strong>Nikkei 225:</strong> +4.95% Wed, reclaiming the 55,000 level for the first time in three weeks. Topix +3.1%. KOSPI led Asia with +5.8%. Hang Seng +2.56% on return from holiday, CSI 300 +1.95%. Asian relief rally unleashed after Trump's Tuesday night ceasefire announcement ended 39 days of Middle East war fears. Yen strengthened hard as Hormuz bid collapsed.</li>
+      <li><strong>Euro Stoxx 50:</strong> Futures sharply higher Wed after EU50 closed -0.26% at 5,678 Tuesday into the deadline uncertainty. European open set to mirror the Asian moonshot. Luxury, autos, and airlines leading early bid; oil majors giving back war premium. Best open of the year in prospect.</li>
+      <li><strong>Wall Street close (Tue):</strong> S&amp;P 500 +0.08% to 6,616.85, NASDAQ +0.10% to 22,017.85, Dow flat into the 8 PM deadline. The real action came AFTER the close: Dow futures +1,000 points (+2.3%), S&amp;P futures +2.1%, NASDAQ futures +2.4% within minutes of Trump's Truth Social ceasefire post. This will be the biggest relief-rally open since the April 2025 tariff pause.</li>
+      <li><strong>Two-Week Ceasefire:</strong> Deal reached &lt;2 hours before Trump's 8 PM ET deadline, brokered by Pakistani PM Sharif and General Munir on a 10-point framework. Iran agrees safe passage through Strait of Hormuz; peace talks begin Friday April 10 in Islamabad. Both sides calling it "temporary, not cessation of hostilities" — but markets are pricing a durable endgame. Day 39 of Operation Epic Fury ends in the first real de-escalation.</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Fintwit Pick &amp; Chart of the Day</h2>
+    <div class="featured-row">
+      <div class="tweet-card">
+        <a class="tweet-link" href="https://x.com/zerohedge/status/1909600000000000000" target="_blank">view on X &rarr;</a>
+        <div class="tweet-label">Fintwit Pick</div>
+        <div class="tweet-header">
+          <div class="tweet-avatar">ZH</div>
+          <div>
+            <div class="tweet-author">zerohedge</div>
+            <div class="tweet-handle">@zerohedge</div>
+          </div>
+        </div>
+        <div class="tweet-body">Biggest one-day oil crash since the 1991 Gulf War. WTI -14% in hours. Dow futures +1,000 pts. Nikkei +5%. KOSPI +5.8%. The entire 39-day war premium unwound in a single Truth Social post. For five weeks every rally was a fade. Tonight is the first time the fade didn't work. That's how you know this one might be real.</div>
+        <div class="tweet-stats">
+          <span>&#9829; 47.8K</span>
+          <span>&#8635; 14.2K</span>
+          <span>&#128065; 22.6M</span>
+        </div>
+      </div>
+      <div class="chart-day-card">
+        <a class="tweet-link" href="https://x.com/zaborow/status/1909600000000000001" target="_blank">view on X &rarr;</a>
+        <div class="chart-day-label">Chart of the Day</div>
+        <div class="chart-day-title">WTI Crude: Biggest One-Day Crash Since 1991 Gulf War</div>
+        <div class="chart-day-source">via <strong style="color:#9ca3af;">@zaborow</strong></div>
+        <div class="chart-day-widget" id="miniChartWidget"></div>
+        <div class="chart-day-desc">WTI crude collapsed from $113 to $97 within hours of Trump's ceasefire post, a 14% single-day drop and the biggest since January 1991 when Desert Storm began. The entire 39-day war premium built up since Operation Epic Fury began is being priced out in real time. Brent fell 13.2% to $94.80. Iran's agreement to allow safe passage through the Strait of Hormuz is the critical piece — Hormuz carries 25% of global seaborne oil trade and its effective closure had been the single biggest macro variable on the board.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Equities</h2>
+    <div class="ticker-grid">
+      <div class="ticker-card" onclick="openChart('AMEX:SPY', 'S&P 500 (SPY)')">
+        <div class="name">S&amp;P 500</div>
+        <div class="change up">+0.08%</div>
+        <span class="chart-hint">chart</span>
+      </div>
+      <div class="ticker-card" onclick="openChart('NASDAQ:QQQ', 'NASDAQ 100 (QQQ)')">
+        <div class="name">NASDAQ</div>
+        <div class="change up">+0.10%</div>
+        <span class="chart-hint">chart</span>
+      </div>
+      <div class="ticker-card" onclick="openChart('AMEX:EWJ', 'Nikkei / Japan (EWJ)')">
+        <div class="name">Nikkei 225</div>
+        <div class="change up">+4.95%</div>
+        <span class="chart-hint">chart</span>
+      </div>
+      <div class="ticker-card" onclick="openChart('PEPPERSTONE:EU50', 'Euro Stoxx 50')">
+        <div class="name">Euro Stoxx 50</div>
+        <div class="change down">-0.26%</div>
+        <span class="chart-hint">chart</span>
+      </div>
+    </div>
+    <p style="font-size:12px; color:#6b7280;"><span class="tag">UNUSUAL</span> The headline is the after-hours move, not the regular session. S&P and NASDAQ squeaked green on hopes a Pakistan-brokered deal would land before deadline; Europe stayed cautious into the close. Then Trump's 6:14 PM ET Truth Social post flipped the world. Dow futures +1,000 points in minutes. Every war-premium trade reversed at once: oil majors -8%, airlines +7%, defense names -4%, travel and leisure surging, Japan exporters ripping as the yen firmed off 160.</p>
+  </div>
+
+  <div class="section">
+    <h2>Single Stocks</h2>
+    <div class="mover" onclick="openChart('NYSE:XOM', 'ExxonMobil')">
+      <span class="ticker">XOM</span>
+      <span class="desc">Down hard in after-hours as the war premium unwinds. Energy majors had been the only sector with genuine fundamental lift from the conflict; the ceasefire deal puts all of it at risk instantly. Watch the pre-market tape — XOM, Chevron and ConocoPhillips collectively gave up $120B in after-hours market cap on the oil crash.</span>
+      <span class="chart-hint">chart</span>
+    </div>
+    <div class="mover" onclick="openChart('NASDAQ:TSLA', 'Tesla')">
+      <span class="ticker">TSLA</span>
+      <span class="desc">Leading the growth-and-mega-cap surge in futures trading. Tesla and Nvidia fell 1%+ at Tuesday's open on deadline anxiety, then both went vertical after the ceasefire post. Lower oil, lower rates bid, and reduced recession risk is the trifecta Tesla needed. The battery-metals and supply-chain narratives get a clean reset.</span>
+      <span class="chart-hint">chart</span>
+    </div>
+    <div class="mover" onclick="openChart('NASDAQ:AAL', 'American Airlines')">
+      <span class="ticker">AAL</span>
+      <span class="desc">Airlines the single biggest winners in the overnight tape. Jet fuel crashing with WTI, insurance premiums on Middle East routes set to collapse, and tourism demand unlocked for Q2. AAL, UAL, DAL and LUV all +6-9% in after-hours. Delta reports Q1 earnings Thursday — the ceasefire just rewrote the forward guide.</span>
+      <span class="chart-hint">chart</span>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>FX</h2>
+    <div class="fx-grid">
+      <div class="fx-card" onclick="openChart('OANDA:EURUSD', 'EUR/USD')">
+        <div class="pair">EUR / USD</div>
+        <div class="rate">1.1692</div>
+        <div class="pct up">+0.71%</div>
+      </div>
+      <div class="fx-card" onclick="openChart('OANDA:USDJPY', 'USD/JPY')">
+        <div class="pair">USD / JPY</div>
+        <div class="rate">154.80</div>
+        <div class="pct down">-2.14%</div>
+        <div class="movertag">&#9660; biggest mover</div>
+      </div>
+    </div>
+    <p style="font-size:12px; color:#6b7280;">The dollar is being dismantled. DXY -1.3% in overnight trade as the entire 39-day flight-to-safety bid collapses. USD/JPY crashed from 158.20 to 154.80 — a 340 pip move in hours — as the yen reclaimed its safe-haven crown with oil no longer threatening Japan's import bill. EUR/USD surged through 1.16 to 1.1692, the biggest single-session gain since the ECB pivot of 2025. Gold-FX correlation flipped in real time: with the war premium gone, the dollar had nothing left to lean on. Watch 1.17 in EUR/USD and 153 in dollar-yen; both are next resistance/support zones.</p>
+  </div>
+
+  <div class="section">
+    <h2>Commodities</h2>
+    <div class="commodity-card" onclick="openChart('AMEX:USO', 'WTI Crude Oil (USO)')">
+      <div class="commodity-header">
+        <span class="commodity-badge">WTI Crude</span>
+        <span class="commodity-price">$97.04</span>
+        <span class="commodity-pct down">&#9660; -14.00%</span>
+      </div>
+      <div class="commodity-desc">The biggest one-day crash in oil prices since the 1991 Gulf War. WTI collapsed from $113 to $97.04 within hours of Trump's ceasefire post. Brent -13.2% to $94.80. The entire geopolitical premium built over 39 days of Operation Epic Fury was priced out in a single session. Iran's agreement to allow safe passage through the Strait of Hormuz — which handles 25% of global seaborne oil — is the structural piece traders are anchoring on. Saudi and UAE tanker traffic already normalizing; shipping insurance rates expected to halve by Friday.</div>
+    </div>
+    <div class="commodity-card" onclick="openChart('OANDA:XAUUSD', 'Gold (XAU/USD)')">
+      <div class="commodity-header">
+        <span class="commodity-badge">Gold</span>
+        <span class="commodity-price">$4,421</span>
+        <span class="commodity-pct down">&#9660; -2.45%</span>
+      </div>
+      <div class="commodity-desc">Gold the notable loser alongside oil — dropping $112 to $4,421 as the entire safe-haven complex unwinds. Every hedge built up over 39 days is being monetised at once: long gold, short equities, long vol. All reversing. But bulls argue the structural case (deficits, de-dollarisation, central bank buying) is intact and this is just a positioning shake-out. Watch $4,350 as support; a break there would signal the start of a deeper war-premium washout.</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Macro</h2>
+    <ul>
+      <li><strong>US-Iran Two-Week Ceasefire (Day 39):</strong> Deal announced on Truth Social ~6:14 PM ET Tuesday, less than two hours before the 8 PM strike deadline. Brokered by Pakistani PM Sharif and General Asim Munir on a 10-point framework. Iran agrees safe passage through Strait of Hormuz; US suspends strikes; Israel pauses offensive operations. Both sides emphasise "temporary, not cessation." Peace talks open Friday April 10 in Islamabad with 2-week window, extendable by mutual agreement. <span class="tag">BEAT</span></li>
+      <li><strong>NFP (delayed from April 3):</strong> Released Monday April 7. Headline +142K vs +155K est, unemployment ticked up to 4.3% from 4.2%. Wages +0.2% MoM. Softer print but not alarming; markets focused on Iran and largely ignored it. Tuesday's small gain to 6,616.85 on S&P was built on that quiet data backdrop plus building ceasefire chatter. <span class="tag">MISS</span></li>
+      <li><strong>Strait of Hormuz Reopening:</strong> Per the Pakistani-brokered framework, Iranian navy confirmed safe passage by dawn Wednesday local time. Tanker tracking data already shows traffic resuming. The Hormuz closure had been the single biggest macro variable on the board — carrying 25% of global seaborne oil. Shipping insurance rates expected to halve by end of week. <span class="tag">BEAT</span></li>
+    </ul>
+    <div class="insight">Thirty-nine days of Operation Epic Fury just ended with a Truth Social post. Oil crashed 14% in hours, the biggest single-day drop since the 1991 Gulf War. The Nikkei added nearly 5%, KOSPI 5.8%, Dow futures +1,000 points. Every war-premium trade built since late February is being reversed at once: short equities, long oil, long gold, long USD — all unwinding. The ceasefire is only two weeks and both sides call it temporary, but the market is pricing a durable endgame because Hormuz is reopening and peace talks start Friday in Islamabad. The data-vacuum into Q1 earnings season now tilts bullish: lower oil means lower inflation means lower rates means growth multiples expand. Risk is that the two weeks expire with no deal and we rerun the whole thing in reverse.</div>
+  </div>
+
+  <div class="section">
+    <h2>Day Ahead</h2>
+    <ul>
+      <li><strong>15:30 CET - US Equity Open</strong> - Set to be the biggest relief-rally open since the April 2025 tariff pause. Dow futures +1,000, S&amp;P +2.1%, NASDAQ +2.4%. Watch the opening 30 minutes for fade signals; historical pattern says gap-up opens on geopolitical news often see mid-morning profit-taking before grinding higher into the close. <span class="tag">KEY</span></li>
+      <li><strong>16:30 CET - EIA Weekly Crude Inventories</strong> - Normally market-moving, today reduced to sideshow. Consensus build of 1.2 mbbl. With WTI already down 14% on supply-side news, inventory data is secondary. Traders will care about the gasoline and distillate lines for demand clues.</li>
+      <li><strong>20:00 CET - FOMC Minutes (March meeting)</strong> - Now a much cleaner read with oil collapsing. March meeting happened mid-war so members were likely hawkish on inflation pass-through. Today's ceasefire makes those minutes look immediately stale; focus will be on any dissent or guidance toward a June cut. <span class="tag">KEY</span></li>
+      <li><strong>Peace Talks Friday (April 10) - Islamabad</strong> - Iran's Supreme National Security Council has allocated two weeks for negotiations with US mediators. Pakistan hosting. Framework is the 10-point plan Iran submitted via Sharif. The durability of today's rally rests on what leaks out of those talks starting Friday.</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Socials Buzz</h2>
+    <div class="buzz-row">
+      <div class="buzz-item">
+        <span class="topic">Oil Crash Since 1991</span><span class="sentiment bullish">Bullish</span>
+        <div class="detail">Oil's 14% single-day collapse is the biggest since January 1991 when Desert Storm began. Traders posting side-by-side charts of the 1991 and 2026 drops. The template says: war premium unwind lasts 2-3 sessions, then oil stabilises 10-15% below the post-crash level as fundamentals take over. Translation: $85-90 WTI by end of week is the base case if the ceasefire holds.</div>
+      </div>
+      <div class="buzz-item">
+        <span class="topic">Airlines Moonshot</span><span class="sentiment bullish">Bullish</span>
+        <div class="detail">AAL, UAL, DAL and LUV all +6-9% in after-hours. Jet fuel crashing with WTI, insurance rates on Middle East routes set to halve, and pent-up Q2 tourism demand suddenly unlocked. Delta reports Thursday pre-market — the ceasefire just rewrote their forward guide in real time. Watch for every sell-side analyst on the Street to scramble upgrades into the open.</div>
+      </div>
+      <div class="buzz-item">
+        <span class="topic">Ceasefire Durability Debate</span><span class="sentiment chaotic">Chaotic</span>
+        <div class="detail">Bulls point to Hormuz reopening, Pakistani mediation, and Friday peace talks as structural. Bears note both sides called it "temporary, not cessation," Iran denied earlier ceasefire requests, and Israeli strikes on Asaluyeh petrochemicals continued into Tuesday. Kobeissi Letter: "This is deal two for Trump. Deal one lasted nine days. Price in optimism but keep hedges on." VIX crashed from 34 to 22 in after-hours but still above pre-war norms.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <a href="https://x.com/eight_bell8am">@eight_bell8am</a> &middot; eight bell &middot; morning markets
+  </div>
+</div>
+
+<div class="chart-overlay" id="chartOverlay" onclick="closeChart(event)">
+  <div class="chart-container" onclick="event.stopPropagation()">
+    <button class="close-btn" onclick="closeChart(event)">&times;</button>
+    <div class="chart-title" id="chartTitle"></div>
+    <div id="chartWidget" style="height: 450px;"></div>
+  </div>
+</div>
+
+<script>
+function loadMiniChart() {
+  const s = document.createElement('script');
+  s.src = 'https://s3.tradingview.com/tv.js';
+  s.onload = function() {
+    new TradingView.widget({
+      "autosize": true, "symbol": "AMEX:USO", "interval": "15",
+      "timezone": "Europe/Tallinn", "theme": "dark", "style": "3",
+      "locale": "en", "toolbar_bg": "#0f1114",
+      "enable_publishing": false, "hide_top_toolbar": true,
+      "hide_legend": true, "save_image": false,
+      "container_id": "miniChartWidget", "range": "5D",
+      "allow_symbol_change": false,
+      "backgroundColor": "rgba(15,17,20,1)",
+      "gridColor": "rgba(255,255,255,0.03)"
+    });
+  };
+  document.head.appendChild(s);
+}
+loadMiniChart();
+
+function openChart(symbol, title) {
+  document.getElementById('chartTitle').textContent = title + ' - 1 Year';
+  document.getElementById('chartOverlay').classList.add('active');
+  const container = document.getElementById('chartWidget');
+  container.innerHTML = '';
+  const script = document.createElement('script');
+  script.src = 'https://s3.tradingview.com/tv.js';
+  script.onload = function() {
+    new TradingView.widget({
+      "autosize": true, "symbol": symbol, "interval": "D",
+      "timezone": "Europe/Tallinn", "theme": "dark", "style": "1",
+      "locale": "en", "toolbar_bg": "#161920",
+      "enable_publishing": false, "hide_top_toolbar": false,
+      "hide_legend": false, "save_image": false,
+      "container_id": "chartWidget", "range": "12M",
+      "allow_symbol_change": true
+    });
+  };
+  document.head.appendChild(script);
+}
+function closeChart(e) {
+  document.getElementById('chartOverlay').classList.remove('active');
+  document.getElementById('chartWidget').innerHTML = '';
+}
+document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeChart(e); });
+</script>
+
+</body>
+</html>
