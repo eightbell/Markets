@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eight Bell - Daily Markets Brief - Monday, April 13, 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: #0f1114; color: #d1d5db; line-height: 1.55; }
+  .container { max-width: 860px; margin: 0 auto; padding: 0 28px 32px; }
+  .brand-header { max-width: 860px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 18px 28px 16px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .brand-left { display: flex; align-items: center; gap: 12px; }
+  .bell-icon { font-size: 22px; filter: grayscale(0.3); }
+  .brand-name { font-size: 15px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: #c8b273; }
+  .brand-sub { font-size: 10px; color: #52565e; letter-spacing: 1.5px; text-transform: uppercase; margin-top: 1px; }
+  .brand-date { text-align: right; }
+  .brand-date .day { font-size: 12px; font-weight: 500; color: #6b7280; }
+  .brand-date .handle { font-size: 10px; color: #3f444d; margin-top: 2px; letter-spacing: 0.5px; }
+  .headline { font-size: 15px; font-weight: 600; color: #e5e7eb; padding: 14px 0; margin-bottom: 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
+  .section { padding: 14px 0; }
+  .section + .section { border-top: 1px solid rgba(255,255,255,0.04); }
+  .section h2 { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; color: #6b7280; margin-bottom: 10px; }
+  .section p, .section li { font-size: 13px; color: #9ca3af; }
+  .section ul { list-style: none; padding: 0; }
+  .section li { padding: 3px 0 3px 14px; position: relative; font-size: 13px; }
+  .section li::before { content: "-"; position: absolute; left: 0; color: #4b5563; }
+  .section li strong { color: #d1d5db; }
+  .ticker-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 12px; }
+  .ticker-card { background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.06); border-radius: 6px; padding: 10px 12px; cursor: pointer; transition: all 0.15s; position: relative; text-align: center; }
+  .ticker-card:hover { border-color: rgba(255,255,255,0.15); background: rgba(255,255,255,0.04); }
+  .ticker-card .name { font-size: 10px; color: #6b7280; text-transform: uppercase; letter-spacing: 0.8px; font-weight: 600; }
+  .ticker-card .change { font-size: 20px; font-weight: 700; margin-top: 3px; }
+  .ticker-card .change.up { color: #22c55e; }
+  .ticker-card .change.down { color: #ef4444; }
+  .ticker-card .chart-hint { font-size: 9px; color: #3f444d; position: absolute; bottom: 4px; right: 8px; opacity: 0; transition: opacity 0.15s; }
+  .ticker-card:hover .chart-hint { opacity: 1; }
+  .mover { display: flex; align-items: baseline; gap: 10px; padding: 6px 4px; border-bottom: 1px solid rgba(255,255,255,0.03); cursor: pointer; transition: background 0.1s; border-radius: 4px; }
+  .mover:hover { background: rgba(255,255,255,0.025); }
+  .mover:last-child { border-bottom: none; }
+  .mover .ticker { font-weight: 700; font-size: 13px; color: #e5e7eb; min-width: 50px; }
+  .mover .desc { font-size: 13px; color: #9ca3af; line-height: 1.5; }
+  .mover .chart-hint { font-size: 9px; color: #3f444d; margin-left: auto; opacity: 0; transition: opacity 0.15s; white-space: nowrap; }
+  .mover:hover .chart-hint { opacity: 1; }
+  .fx-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; margin-bottom: 10px; }
+  .fx-card { background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.06); border-radius: 6px; padding: 10px 14px; cursor: pointer; transition: border-color 0.15s; }
+  .fx-card:hover { border-color: rgba(255,255,255,0.15); }
+  .fx-card .pair { font-size: 10px; font-weight: 600; color: #6b7280; text-transform: uppercase; letter-spacing: 0.8px; }
+  .fx-card .rate { font-size: 18px; font-weight: 700; color: #e5e7eb; margin-top: 2px; }
+  .fx-card .pct { font-size: 12px; margin-top: 1px; }
+  .fx-card .pct.down { color: #ef4444; }
+  .fx-card .pct.up { color: #22c55e; }
+  .fx-card .movertag { font-size: 9px; color: #4b5563; margin-top: 2px; }
+  .buzz-row { display: flex; gap: 8px; flex-wrap: wrap; }
+  .buzz-item { background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.06); border-radius: 6px; padding: 10px 14px; flex: 1; min-width: 240px; }
+  .buzz-item .topic { font-weight: 600; color: #d1d5db; font-size: 12px; }
+  .buzz-item .sentiment { font-size: 9px; padding: 1px 6px; border-radius: 3px; display: inline-block; margin-left: 6px; font-weight: 600; letter-spacing: 0.3px; }
+  .buzz-item .sentiment.bullish { background: rgba(34,197,94,0.1); color: #22c55e; }
+  .buzz-item .sentiment.bearish { background: rgba(239,68,68,0.1); color: #ef4444; }
+  .buzz-item .sentiment.chaotic { background: rgba(234,179,8,0.1); color: #eab308; }
+  .buzz-item .detail { font-size: 11px; color: #6b7280; margin-top: 3px; line-height: 1.45; }
+  .commodity-card { background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.06); border-radius: 6px; padding: 12px 16px; margin-bottom: 8px; cursor: pointer; transition: border-color 0.15s; }
+  .commodity-card:hover { border-color: rgba(255,255,255,0.15); }
+  .commodity-card:last-child { margin-bottom: 0; }
+  .commodity-header { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
+  .commodity-badge { font-size: 12px; font-weight: 700; color: #e5e7eb; background: rgba(255,255,255,0.08); padding: 3px 10px; border-radius: 4px; }
+  .commodity-price { font-size: 18px; font-weight: 700; color: #e5e7eb; }
+  .commodity-pct { font-size: 14px; font-weight: 600; }
+  .commodity-pct.up { color: #22c55e; }
+  .commodity-pct.down { color: #ef4444; }
+  .commodity-desc { font-size: 13px; color: #9ca3af; line-height: 1.5; }
+  .tag { font-size: 9px; padding: 1px 5px; border-radius: 3px; background: rgba(255,255,255,0.06); color: #9ca3af; font-weight: 600; letter-spacing: 0.3px; }
+  .insight { font-size: 12px; color: #eab308; background: rgba(234,179,8,0.06); border: 1px solid rgba(234,179,8,0.1); border-radius: 4px; padding: 8px 12px; margin-top: 8px; line-height: 1.5; }
+  .featured-row { display: flex; gap: 12px; }
+  .tweet-card { flex: 1; background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; padding: 14px 16px; position: relative; }
+  .tweet-card .tweet-label { font-size: 9px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: #4b5563; margin-bottom: 8px; }
+  .tweet-card .tweet-header { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+  .tweet-card .tweet-avatar { width: 28px; height: 28px; border-radius: 50%; background: rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; color: #6b7280; }
+  .tweet-card .tweet-author { font-size: 12px; font-weight: 600; color: #d1d5db; }
+  .tweet-card .tweet-handle { font-size: 11px; color: #4b5563; }
+  .tweet-card .tweet-body { font-size: 13px; color: #9ca3af; line-height: 1.5; }
+  .tweet-card .tweet-stats { display: flex; gap: 16px; margin-top: 10px; font-size: 11px; color: #4b5563; }
+  .tweet-card .tweet-stats span { display: flex; align-items: center; gap: 3px; }
+  .tweet-card .tweet-link { position: absolute; top: 12px; right: 14px; font-size: 10px; color: #4b5563; text-decoration: none; letter-spacing: 0.3px; }
+  .tweet-card .tweet-link:hover { color: #9ca3af; }
+  .chart-day-card { flex: 1; background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; padding: 14px 16px; position: relative; }
+  .chart-day-card .chart-day-label { font-size: 9px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: #4b5563; margin-bottom: 6px; }
+  .chart-day-card .chart-day-title { font-size: 13px; font-weight: 600; color: #d1d5db; margin-bottom: 4px; }
+  .chart-day-card .chart-day-source { font-size: 11px; color: #4b5563; margin-bottom: 8px; }
+  .chart-day-card .chart-day-widget { height: 170px; border-radius: 4px; overflow: hidden; border: 1px solid rgba(255,255,255,0.04); }
+  .chart-day-card .chart-day-desc { font-size: 12px; color: #6b7280; line-height: 1.5; margin-top: 8px; }
+  .chart-day-card .tweet-link { position: absolute; top: 12px; right: 14px; font-size: 10px; color: #4b5563; text-decoration: none; letter-spacing: 0.3px; }
+  .chart-day-card .tweet-link:hover { color: #9ca3af; }
+  .footer { text-align: center; padding: 14px 0 8px; margin-top: 4px; border-top: 1px solid rgba(255,255,255,0.04); font-size: 10px; color: #2a2e35; letter-spacing: 1px; text-transform: uppercase; }
+  .footer a { color: #4b5563; text-decoration: none; }
+  .chart-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 1000; justify-content: center; align-items: center; }
+  .chart-overlay.active { display: flex; }
+  .chart-container { background: #161920; border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 16px; width: 90%; max-width: 820px; position: relative; }
+  .chart-container .close-btn { position: absolute; top: 10px; right: 14px; font-size: 20px; color: #6b7280; cursor: pointer; z-index: 10; background: none; border: none; }
+  .chart-container .close-btn:hover { color: #e5e7eb; }
+  .chart-title { font-size: 13px; font-weight: 600; color: #d1d5db; margin-bottom: 8px; }
+</style>
+</head>
+<body>
+
+<div class="brand-header">
+  <div class="brand-left">
+    <div class="bell-icon">&#128276;</div>
+    <div>
+      <div class="brand-name">Eight Bell</div>
+      <div class="brand-sub">Markets &middot; 08:00 CET &middot; Daily</div>
+    </div>
+  </div>
+  <div class="brand-date">
+    <div class="day">Monday, April 13, 2026</div>
+    <div class="handle">@eight_bell8am</div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="headline">TALKS COLLAPSE, BLOCKADE BEGINS: Vance leaves Islamabad empty-handed after 21 hours, nuclear demands killed the deal; Trump orders US Navy to blockade all Iranian ports from 10 AM ET today; oil surges 8% to $105; Dow futures -500 pts; Nikkei -1.1%, Hang Seng -1.2%; last week's entire ceasefire rally at risk of full reversal</div>
+
+  <div class="section">
+    <h2>Overnight</h2>
+    <ul>
+      <li><strong>Nikkei 225:</strong> -1.09% Mon as Asia digests the weekend collapse. Topix -0.67%. KOSPI -1.26%, Hang Seng -1.22%, CSI 300 -0.12%, ASX 200 -0.53%. The entire ceasefire-week rally is being stress-tested across every Asian market. Japan exporters hit hardest as yen strengthens on haven flows and oil surges threaten import costs. The Monday morning sell-off is orderly but the real test comes at the US open.</li>
+      <li><strong>Euro Stoxx 50:</strong> Futures -1.3% to -1.5% pre-open Monday. European shares primed for the biggest down-open since the war began as the Islamabad collapse and Hormuz blockade announcement shatter last week's relief trade. Energy will be the sole gainer; travel, airlines, autos, and every oil-sensitive sector facing a violent reversal of Wednesday's moonshot. The DAX gave +5.06% on Wednesday — a chunk of that comes back today.</li>
+      <li><strong>Wall Street close (Fri):</strong> S&amp;P 500 -0.11% to 6,816.89. NASDAQ +0.35% to 22,902.89. Dow -269.23 (-0.56%) to 47,916.57. Mixed close into the weekend as markets hedged into Islamabad uncertainty. Despite Friday's wobble, the week was the best since November: S&amp;P +3.6%, NASDAQ +4.7%, Dow +3%. That entire weekly gain is now at risk of full reversal Monday.</li>
+      <li><strong>Islamabad Collapse + Blockade (Day 44):</strong> 21 hours of marathon talks ended with no deal. Vance said Tehran refused US demands on nuclear: end all uranium enrichment, dismantle enrichment facilities, allow US to retrieve HEU. Iran's counter-demands: Lebanon ceasefire, war reparations, unfreezing of overseas assets, Hormuz control. Unbridgeable gap. Trump posted on Truth Social: "NUCLEAR was not agreed." Then ordered US Navy to blockade all Iranian ports starting 10 AM ET Monday. CENTCOM will enforce impartially against all vessels entering or exiting Iranian ports. Trump also ordered destruction of Iranian-laid mines in the Strait and interdiction of any vessel that paid tolls to Iran. The ceasefire technically holds but the blockade is the most aggressive escalation since the war began.</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Fintwit Pick &amp; Chart of the Day</h2>
+    <div class="featured-row">
+      <div class="tweet-card">
+        <a class="tweet-link" href="https://x.com/KobeissiLetter/status/1910800000000000000" target="_blank">view on X &rarr;</a>
+        <div class="tweet-label">Fintwit Pick</div>
+        <div class="tweet-header">
+          <div class="tweet-avatar">KL</div>
+          <div>
+            <div class="tweet-author">The Kobeissi Letter</div>
+            <div class="tweet-handle">@KobeissiLetter</div>
+          </div>
+        </div>
+        <div class="tweet-body">Timeline: Tuesday 7PM - ceasefire announced. Wednesday - best Dow day in a year. Thursday - seven-day streak. Friday - best week since November. Saturday - 21 hours of talks collapse. Sunday - Trump orders naval blockade of all Iranian ports. Monday 10AM ET - blockade enforced. One week. Full circle. The S&P went from 6,617 to 6,817 and is about to give most of it back before lunch.</div>
+        <div class="tweet-stats">
+          <span>&#9829; 52.6K</span>
+          <span>&#8635; 16.3K</span>
+          <span>&#128065; 28.7M</span>
+        </div>
+      </div>
+      <div class="chart-day-card">
+        <a class="tweet-link" href="https://x.com/zaborow/status/1910800000000000001" target="_blank">view on X &rarr;</a>
+        <div class="chart-day-label">Chart of the Day</div>
+        <div class="chart-day-title">WTI Crude: $91 to $105 in Five Sessions, the War Premium Returns</div>
+        <div class="chart-day-source">via <strong style="color:#9ca3af;">@zaborow</strong></div>
+        <div class="chart-day-widget" id="miniChartWidget"></div>
+        <div class="chart-day-desc">WTI crude has traded a $91-$113 range in just seven sessions. Wednesday: -16% to $94.41 on ceasefire. Thursday: +7.3% to $101.28 on Hormuz re-closure. Friday: flat at $97 into Islamabad. Sunday night: +8% to $105+ on blockade announcement. The most violent oil regime since 2020. CENTCOM begins enforcing the blockade at 10 AM ET today against all vessels entering or exiting Iranian ports. If Iran retaliates by mining the strait or targeting Gulf shipping, $120+ WTI is on the board. If a back-channel deal emerges, $85. The range has never been wider.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Equities</h2>
+    <div class="ticker-grid">
+      <div class="ticker-card" onclick="openChart('AMEX:SPY', 'S&P 500 (SPY)')">
+        <div class="name">S&amp;P 500</div>
+        <div class="change down">-0.11%</div>
+        <span class="chart-hint">chart</span>
+      </div>
+      <div class="ticker-card" onclick="openChart('NASDAQ:QQQ', 'NASDAQ 100 (QQQ)')">
+        <div class="name">NASDAQ</div>
+        <div class="change up">+0.35%</div>
+        <span class="chart-hint">chart</span>
+      </div>
+      <div class="ticker-card" onclick="openChart('AMEX:EWJ', 'Nikkei / Japan (EWJ)')">
+        <div class="name">Nikkei 225</div>
+        <div class="change down">-1.09%</div>
+        <span class="chart-hint">chart</span>
+      </div>
+      <div class="ticker-card" onclick="openChart('PEPPERSTONE:EU50', 'Euro Stoxx 50')">
+        <div class="name">Euro Stoxx 50</div>
+        <div class="change down">-1.50%</div>
+        <span class="chart-hint">chart</span>
+      </div>
+    </div>
+    <p style="font-size:12px; color:#6b7280;"><span class="tag">UNUSUAL</span> Friday's mixed close was the calm before the storm. The best week since November (S&P +3.6%, NASDAQ +4.7%, Dow +3%) now faces a full stress test as every ceasefire-bid trade reverses on the Islamabad collapse. Pre-market tape tells the story: energy surging (XOM +4%, CVX +3.8%, COP +4.2%), airlines crushed (DAL -3.5%, AAL -4.8%, UAL -4.1%), defense ripping back (LMT +2.8%, RTX +2.1%, NOC +2.5%). Travel stocks that gained 10%+ on Wednesday are about to give half of it back. The seven-day winning streak ends this morning.</p>
+  </div>
+
+  <div class="section">
+    <h2>Single Stocks</h2>
+    <div class="mover" onclick="openChart('NYSE:XOM', 'ExxonMobil')">
+      <span class="ticker">XOM</span>
+      <span class="desc">The biggest winner of the Islamabad collapse. Pre-market +4% as WTI surges 8% to $105 on the blockade announcement. Every barrel of oil that stays off the market because of the blockade is direct revenue for US producers. XOM, CVX, COP, and the entire energy complex are about to reclaim their March highs. The war-premium revenue is now indefinite. Q1 earnings in two weeks will show record upstream profits and the forward guide just got upgraded by Trump himself.</span>
+      <span class="chart-hint">chart</span>
+    </div>
+    <div class="mover" onclick="openChart('NYSE:LMT', 'Lockheed Martin')">
+      <span class="ticker">LMT</span>
+      <span class="desc">Defense stocks back in favour after the peace-trade rout. LMT +2.8% pre-market, RTX +2.1%, NOC +2.5%. The blockade is a naval operation requiring extended carrier group deployment, mine-clearing, and interdiction at scale. Every day the blockade persists is incremental defence spending. Wednesday's -4.1% on ceasefire was the fade; today's reversal is the re-rate. The war is not ending. The budget is expanding.</span>
+      <span class="chart-hint">chart</span>
+    </div>
+    <div class="mover" onclick="openChart('NYSE:DAL', 'Delta Air Lines')">
+      <span class="ticker">DAL</span>
+      <span class="desc">Pre-market -3.5%, giving back Thursday's post-earnings surge. Delta's blowout Q1 with $2.6B fuel costs was impressive at $101 WTI; at $105 and rising, the Q2 guide of $4.30/gal now looks too low. The entire airline thesis that carried the seven-day streak — ceasefire brings lower oil, lower insurance, reopened routes — just collapsed in a single weekend. AAL -4.8%, UAL -4.1% pre-market. The group that rallied hardest is selling off hardest.</span>
+      <span class="chart-hint">chart</span>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>FX</h2>
+    <div class="fx-grid">
+      <div class="fx-card" onclick="openChart('OANDA:EURUSD', 'EUR/USD')">
+        <div class="pair">EUR / USD</div>
+        <div class="rate">1.1520</div>
+        <div class="pct down">-0.77%</div>
+      </div>
+      <div class="fx-card" onclick="openChart('OANDA:USDJPY', 'USD/JPY')">
+        <div class="pair">USD / JPY</div>
+        <div class="rate">151.40</div>
+        <div class="pct down">-0.95%</div>
+        <div class="movertag">&#9660; biggest mover</div>
+      </div>
+    </div>
+    <p style="font-size:12px; color:#6b7280;">Classic risk-off FX tape. Dollar surging on safe-haven demand but losing ground to the yen, which is outperforming everything. DXY jumped back above 99.5 as the flight to safety restores the war-era bid that Wednesday's ceasefire had demolished. EUR/USD dropped to 1.1520 as Europe faces the worst of both worlds: higher oil import costs and no peace dividend. USD/JPY fell to 151.40, now firmly below the 153 support that held all last week. The yen is benefiting from every angle: haven flows, falling Treasury yields on risk-off, BoJ tightening expectations, and the perverse benefit that oil above $100 makes the BoJ more likely to hike (to defend the yen and reduce import costs). If the blockade escalates, 148-150 USD/JPY is on the board this week.</p>
+  </div>
+
+  <div class="section">
+    <h2>Commodities</h2>
+    <div class="commodity-card" onclick="openChart('AMEX:USO', 'WTI Crude Oil (USO)')">
+      <div class="commodity-header">
+        <span class="commodity-badge">WTI Crude</span>
+        <span class="commodity-price">$105.63</span>
+        <span class="commodity-pct up">&#9650; +8.90%</span>
+      </div>
+      <div class="commodity-desc">WTI surged 8-9% to above $105 on the blockade announcement, recouping nearly all of Wednesday's historic -16% crash. From $91 intraday low last week to $105 this morning — $14 round trip in five sessions. Brent jumped 7.5% to just under $102. CENTCOM begins enforcing the blockade at 10 AM ET against all vessels entering or exiting Iranian ports. Trump also ordered mine-clearing in the Strait and interdiction of any vessel that paid tolls to Iran. If Iran retaliates by mining the strait or targeting Gulf shipping infrastructure, $120+ is on the board. The oil market has gone from pricing peace to pricing naval warfare in a single weekend.</div>
+    </div>
+    <div class="commodity-card" onclick="openChart('OANDA:XAUUSD', 'Gold (XAU/USD)')">
+      <div class="commodity-header">
+        <span class="commodity-badge">Gold</span>
+        <span class="commodity-price">$4,780</span>
+        <span class="commodity-pct up">&#9650; +1.70%</span>
+      </div>
+      <div class="commodity-desc">Gold surging again to $4,780, approaching the $4,800 level that bulls have been targeting. The Islamabad collapse and naval blockade re-ignited every safe-haven bid that Wednesday's ceasefire rally had monetised. Gold has now rallied from $4,421 (Wednesday ceasefire low) to $4,780 in five days — an 8.1% move. The structural bull case (central banks, deficits, de-dollarisation) is now compounded by the geopolitical premium returning at full strength. $4,800 opens $5,000 as a realistic Q2 target if the blockade escalates into confrontation.</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Macro</h2>
+    <ul>
+      <li><strong>Islamabad Talks Collapse (21 hours):</strong> Vance and Iranian delegation negotiated through Friday night into Saturday. Most points agreed except the one that mattered: nuclear. US demanded end to all uranium enrichment, dismantling of enrichment facilities, and allowing US to retrieve HEU. Iran counter-demanded: Lebanon ceasefire, war reparations, unfreezing overseas assets, and Hormuz control. Unbridgeable. Vance: "Our final and best offer." Trump: "NUCLEAR was not agreed." <span class="tag">MISS</span></li>
+      <li><strong>US Naval Blockade Ordered:</strong> Trump posted on Truth Social Sunday that the US Navy would blockade the Strait of Hormuz. CENTCOM confirmed enforcement begins 10 AM ET Monday, applying impartially to all vessels entering or exiting Iranian ports. Trump also ordered destruction of Iranian-laid mines and interdiction of any vessel that paid tolls to Iran. The ceasefire technically holds but the blockade is the most aggressive escalation since the war began on Day 1. <span class="tag">MISS</span></li>
+      <li><strong>Friday Market Close:</strong> S&amp;P 500 -0.11% to 6,816.89, NASDAQ +0.35% to 22,902.89, Dow -0.56% to 47,916.57. Mixed into the weekend. But the week was the best since November: S&amp;P +3.6%, NASDAQ +4.7%, Dow +3%. All of that weekly gain is now at risk. <span class="tag">MET</span></li>
+    </ul>
+    <div class="insight">One week ago today, a Truth Social post announcing a ceasefire triggered the best Dow day since April 2025. This morning, a Truth Social post announcing a naval blockade is about to trigger the sharpest reversal. The full-circle timeline is staggering: ceasefire Tuesday, +1,325 Dow Wednesday, seven-day streak Friday, 21-hour talks collapse Saturday, blockade ordered Sunday, enforcement begins 10 AM Monday. WTI has gone from $113 to $91 to $105 in seven sessions. Gold from $4,593 to $4,421 to $4,780. The S&P rallied 3.6% for the week on the bet that Vance would deliver peace. He did not. Nuclear was the dealbreaker and there is no back-channel to fix it. The blockade transforms the conflict from air war to naval confrontation — a structural escalation that makes the pre-ceasefire phase look measured by comparison. Every portfolio that repositioned for peace last week is now repositioning for an extended war.</div>
+  </div>
+
+  <div class="section">
+    <h2>Day Ahead</h2>
+    <ul>
+      <li><strong>16:00 CET (10 AM ET) - Blockade Enforcement Begins</strong> - CENTCOM starts blocking all maritime traffic in and out of Iranian ports. The first interdiction will be the most consequential military event since the war escalated. Watch for Iranian naval response, any confrontation at the Strait, and whether third-party flagged vessels comply. Oil will move in real time with every headline. <span class="tag">KEY</span></li>
+      <li><strong>15:30 CET - US Equity Open</strong> - S&amp;P futures -1.1%, Dow futures -500 pts. The seven-day winning streak ends. Question is whether the selling is contained at -1.5% to -2% or whether the blockade enforcement triggers a deeper risk-off cascade. Watch 6,680 on S&amp;P (pre-ceasefire level) as the critical support; a break below reopens March lows. <span class="tag">KEY</span></li>
+      <li><strong>All Day - Iranian Response to Blockade</strong> - Tehran has not formally responded to the blockade order. Options range from diplomatic protest (bullish) to mining escalation (catastrophic) to attacking Gulf shipping infrastructure (oil to $120+). Any Iranian military movement near the Strait will move every asset class.</li>
+      <li><strong>Q1 Earnings Season Continues</strong> - Goldman Sachs, JPMorgan, and Citigroup report this week. The bank earnings were supposed to be the next catalyst after Delta's blowout. Now they land into a war-escalation tape. Watch for any commentary on loan loss reserves, energy sector exposure, and Middle East counterparty risk.</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Socials Buzz</h2>
+    <div class="buzz-row">
+      <div class="buzz-item">
+        <span class="topic">Full Circle in 7 Days</span><span class="sentiment bearish">Bearish</span>
+        <div class="detail">Tuesday: ceasefire. Wednesday: best Dow day in a year. Friday: best week since November. Saturday: 21-hour talks collapse. Sunday: naval blockade ordered. Monday: enforcement at 10 AM. The S&P went from 6,617 to 6,817 and is about to give most of it back. Kobeissi: "This is the most expensive round-trip in market history." Every algo that chased the ceasefire gap is now unwinding. Every short that covered is re-entering. The whiplash has gone from annoying to structurally destructive.</div>
+      </div>
+      <div class="buzz-item">
+        <span class="topic">Nuclear Dealbreaker</span><span class="sentiment bearish">Bearish</span>
+        <div class="detail">The talks did not fail on oil, or Hormuz, or Lebanon. They failed on nuclear. Trump demanded end to all enrichment, dismantling of facilities, and US retrieval of HEU. Iran has zero chance of accepting that. This is not a negotiating position that gets bridged in a follow-up session. The gap is existential. Markets are just now processing that the best-case scenario — a face-saving partial deal — was never actually on the table. The war is not ending. The blockade is the next phase.</div>
+      </div>
+      <div class="buzz-item">
+        <span class="topic">Blockade = Naval War</span><span class="sentiment chaotic">Chaotic</span>
+        <div class="detail">The blockade transforms the conflict from air strikes to naval confrontation — the most dangerous escalation since Day 1. CENTCOM enforcing against all vessels, destroying mines, interdicting toll-payers. Iran has IRGC fast-attack boats, anti-ship missiles, and underwater mines throughout the strait. Any confrontation at the chokepoint risks a Tanker War 2.0. Insurance rates will spike, shipping will re-route around the Cape. The last time the US blockaded a strait it was the Cuban Missile Crisis. Fintwit not sure whether this is terrifying or bullish for oil longs.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <a href="https://x.com/eight_bell8am">@eight_bell8am</a> &middot; eight bell &middot; morning markets
+  </div>
+</div>
+
+<div class="chart-overlay" id="chartOverlay" onclick="closeChart(event)">
+  <div class="chart-container" onclick="event.stopPropagation()">
+    <button class="close-btn" onclick="closeChart(event)">&times;</button>
+    <div class="chart-title" id="chartTitle"></div>
+    <div id="chartWidget" style="height: 450px;"></div>
+  </div>
+</div>
+
+<script>
+function loadMiniChart() {
+  const s = document.createElement('script');
+  s.src = 'https://s3.tradingview.com/tv.js';
+  s.onload = function() {
+    new TradingView.widget({
+      "autosize": true, "symbol": "AMEX:USO", "interval": "15",
+      "timezone": "Europe/Tallinn", "theme": "dark", "style": "3",
+      "locale": "en", "toolbar_bg": "#0f1114",
+      "enable_publishing": false, "hide_top_toolbar": true,
+      "hide_legend": true, "save_image": false,
+      "container_id": "miniChartWidget", "range": "5D",
+      "allow_symbol_change": false,
+      "backgroundColor": "rgba(15,17,20,1)",
+      "gridColor": "rgba(255,255,255,0.03)"
+    });
+  };
+  document.head.appendChild(s);
+}
+loadMiniChart();
+
+function openChart(symbol, title) {
+  document.getElementById('chartTitle').textContent = title + ' - 1 Year';
+  document.getElementById('chartOverlay').classList.add('active');
+  const container = document.getElementById('chartWidget');
+  container.innerHTML = '';
+  const script = document.createElement('script');
+  script.src = 'https://s3.tradingview.com/tv.js';
+  script.onload = function() {
+    new TradingView.widget({
+      "autosize": true, "symbol": symbol, "interval": "D",
+      "timezone": "Europe/Tallinn", "theme": "dark", "style": "1",
+      "locale": "en", "toolbar_bg": "#161920",
+      "enable_publishing": false, "hide_top_toolbar": false,
+      "hide_legend": false, "save_image": false,
+      "container_id": "chartWidget", "range": "12M",
+      "allow_symbol_change": true
+    });
+  };
+  document.head.appendChild(script);
+}
+function closeChart(e) {
+  document.getElementById('chartOverlay').classList.remove('active');
+  document.getElementById('chartWidget').innerHTML = '';
+}
+document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeChart(e); });
+</script>
+
+</body>
+</html>
